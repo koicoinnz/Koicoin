@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+  <title>KOICOIN</title>
+
+  <style>
+    /* ===== Reset ===== */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    html, body {
+      height: 100%;
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI",
+                   "PingFang SC", "Helvetica Neue", Arial, sans-serif;
+      background: #06080c;
+      color: #ffffff;
+      overflow-x: hidden;
+    }
+
+    /* ===== Hero ===== */
+    .hero {
+      min-height: 100vh;
+      width: 100%;
+      background: url("hero.JPG") center center / cover no-repeat;
+      position: relative;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 8vh 6vw 14vh;
+    }
+
+    .hero::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(
+        to bottom,
+        rgba(0,0,0,0.35),
+        rgba(0,0,0,0.55)
+      );
+      z-index: 0;
+    }
+
+    .hero-content {
+      position: relative;
+      z-index: 1;
+      width: 100%;
+      max-width: 1200px;
+    }
+
+    /* ===== Language Switch ===== */
+    .lang {
+      position: absolute;
+      top: 20px;
+      right: 20px;
+      background: rgba(255,255,255,0.12);
+      backdrop-filter: blur(10px);
+      border-radius: 999px;
+      padding: 4px;
+      display: flex;
+      gap: 4px;
+      font-size: 13px;
+    }
+
+    .lang span {
+      padding: 6px 14px;
+      border-radius: 999px;
+      opacity: 0.6;
+    }
+
+    .lang .active {
+      background: rgba(255,255,255,0.18);
+      opacity: 1;
+    }
+
+    /* ===== Logo ===== */
+    .logo {
+      font-size: clamp(56px, 14vw, 160px);
+      font-weight: 700;
+      letter-spacing: 0.08em;
+      line-height: 1;
+      margin-bottom: 12px;
+      white-space: nowrap;
+    }
+
+    .tagline {
+      font-size: 14px;
+      letter-spacing: 0.28em;
+      opacity: 0.7;
+      margin-bottom: 64px;
+    }
+
+    /* ===== Info Cards ===== */
+    .cards {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 18px;
+      max-width: 720px;
+    }
+
+    .card {
+      background: rgba(255,255,255,0.08);
+      border-radius: 20px;
+      padding: 18px 20px;
+      backdrop-filter: blur(16px);
+    }
+
+    .card h4 {
+      font-size: 12px;
+      letter-spacing: 0.2em;
+      opacity: 0.6;
+      margin-bottom: 8px;
+    }
+
+    .card p {
+      font-size: 16px;
+      font-weight: 500;
+    }
+
+    /* ===== Footer ===== */
+    footer {
+      position: absolute;
+      bottom: 18px;
+      left: 0;
+      width: 100%;
+      text-align: center;
+      font-size: 12px;
+      opacity: 0.35;
+    }
+
+    /* ===== Mobile ===== */
+    @media (max-width: 768px) {
+      .hero {
+        padding: 10vh 6vw 18vh;
+      }
+
+      .logo {
+        font-size: 14vw;
+        letter-spacing: 0.06em;
+      }
+
+      .tagline {
+        font-size: 12px;
+        margin-bottom: 48px;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <section class="hero">
+    <div class="lang">
+      <span class="active">中文</span>
+      <span>EN</span>
+    </div>
+
+    <div class="hero-content">
+      <div class="logo">KOICOIN</div>
+      <div class="tagline">CAFE · KTV · BAR</div>
+
+      <div class="cards">
+        <div class="card">
+          <h4>PHONE</h4>
+          <p>027 332 2466</p>
+        </div>
+
+        <div class="card">
+          <h4>WECHAT</h4>
+          <p>koicoin_nz</p>
+        </div>
+
+        <div class="card">
+          <h4>ADDRESS</h4>
+          <p>260 Oteha Valley Road, Albany, Auckland</p>
+        </div>
+
+        <div class="card">
+          <h4>HOURS</h4>
+          <p>11am – 3am</p>
+        </div>
+      </div>
+    </div>
+
+    <footer>
+      KOICOIN · Albany · Auckland
+    </footer>
+  </section>
+
+</body>
+</html>
