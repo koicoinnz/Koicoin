@@ -19,7 +19,7 @@
       --safe-right: env(safe-area-inset-right);
       --safe-bottom: env(safe-area-inset-bottom);
       --safe-left: env(safe-area-inset-left);
-      --vh: 1vh; /* will be corrected by JS on iOS */
+      --vh: 1vh; /* corrected by JS on iOS */
     }
 
     *{ box-sizing:border-box; }
@@ -31,6 +31,7 @@
       font-family: ui-sans-serif, system-ui, -apple-system, "SF Pro Display","SF Pro Text", Segoe UI, Roboto, Helvetica, Arial, "Noto Sans", "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", sans-serif;
       -webkit-font-smoothing: antialiased;
       -moz-osx-font-smoothing: grayscale;
+      overflow-x: hidden;
     }
 
     /* kill default blue links */
@@ -43,7 +44,7 @@
       font-weight: 800;
     }
 
-    /* ---------- Language toggle (fixed, no header bar) ---------- */
+    /* ---------- Language toggle ---------- */
     .lang{
       position: fixed;
       top: calc(18px + var(--safe-top));
@@ -82,12 +83,16 @@
       height: 100svh;
       height: calc(var(--vh) * 100);
       overflow: hidden;
-      .hero{
-  display:flex;
-  align-items: center;     /* 垂直居中 */
-  justify-content: center; /* 水平居中 */
-}
-      padding: 0 calc(32px + var(--safe-left)) calc(28px + var(--safe-bottom)) calc(32px + var(--safe-left));
+
+      /* ✅ 正确写法：直接在这里居中，不要嵌套 .hero{} */
+      display:flex;
+      align-items: center;     /* 垂直居中 */
+      justify-content: center; /* 水平居中 */
+
+      /* 保留安全边距，但不会把内容顶到上面 */
+      padding: calc(24px + var(--safe-top)) calc(32px + var(--safe-right))
+               calc(24px + var(--safe-bottom)) calc(32px + var(--safe-left));
+
       background: #000;
     }
 
@@ -123,6 +128,7 @@
       z-index: 2;
       width: min(1200px, 100%);
       margin: 0 auto;
+      text-align: center; /* ✅ 让标题真正居中 */
     }
 
     .brand{
@@ -153,6 +159,7 @@
       letter-spacing: .22em;
       text-transform: uppercase;
       user-select:none;
+      cursor: pointer;
     }
 
     .scroll .dot{
@@ -250,11 +257,7 @@
       .row{ grid-template-columns: 84px 1fr; }
       .value{ font-size: 19px; }
       .value.small{ font-size: 17px; }
-    }
-
-    /* Make sure it looks premium on very large screens too */
-    @media (min-width: 1400px){
-      .card{ padding: 30px 34px; }
+      .brand{ font-size: clamp(72px, 16vw, 160px); } /* 手机别太爆 */
     }
 
     /* Reduce motion accessibility */
@@ -304,11 +307,6 @@
             <div class="label" data-i18n="wechat_label">微信</div>
             <div class="value small">koicoin_nz</div>
           </div>
-
-          <div class="divider"></div>
-          
-            
-          </div>
         </div>
 
         <div class="card">
@@ -345,7 +343,7 @@
     scrollBtn.addEventListener('click', goInfo);
     scrollBtn.addEventListener('keydown', (e)=>{ if(e.key === 'Enter' || e.key === ' ') goInfo(); });
 
-    // i18n
+    // i18n (修正：中文/英文内容正确)
     const dict = {
       zh: {
         scroll: "",
@@ -353,7 +351,6 @@
         contact_kicker: "预约 / 咨询",
         phone_label: "电话",
         wechat_label: "微信",
-  
         info_kicker: "信息",
         address_label: "地址",
         address_value: "260 Oteha Valley Road, Albany, Auckland",
@@ -366,7 +363,6 @@
         contact_kicker: "CONTACT",
         phone_label: "PHONE",
         wechat_label: "WECHAT",
-        
         info_kicker: "INFO",
         address_label: "ADDRESS",
         address_value: "260 Oteha Valley Road, Albany, Auckland",
