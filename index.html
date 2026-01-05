@@ -1,10 +1,11 @@
 <!doctype html>
-<html lang="en">
+<html lang="zh">
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover" />
   <meta name="color-scheme" content="dark" />
   <title>KOICOIN</title>
+
   <style>
     :root{
       --bg:#050607;
@@ -25,64 +26,60 @@
       margin:0;
       background:var(--bg);
       color:var(--text);
-      font-family: ui-sans-serif, system-ui, -apple-system, "SF Pro Display","SF Pro Text", Segoe UI, Roboto, Helvetica, Arial, "Noto Sans", "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", sans-serif;
+      font-family: ui-sans-serif, system-ui, -apple-system,
+        "SF Pro Display","SF Pro Text",
+        Segoe UI, Roboto, Helvetica, Arial,
+        "PingFang SC","Hiragino Sans GB","Microsoft YaHei",sans-serif;
       -webkit-font-smoothing: antialiased;
       -moz-osx-font-smoothing: grayscale;
       overflow-x:hidden;
     }
 
-    /* kill default blue links */
-    a, a:visited { color: inherit; text-decoration: none; }
-    a:hover { text-decoration: none; }
-    a:active { opacity:.9; }
-    a.phone-link{ color: var(--text); font-weight: 800; }
+    a{ color:inherit; text-decoration:none; }
 
     /* ---------- Language toggle ---------- */
     .lang{
-      position: fixed;
-      top: calc(18px + var(--safe-top));
-      right: calc(18px + var(--safe-right));
-      z-index: 50;
+      position:fixed;
+      top:calc(16px + var(--safe-top));
+      right:calc(16px + var(--safe-right));
+      z-index:20;
       display:flex;
       gap:6px;
       padding:6px;
       border-radius:999px;
-      background: rgba(255,255,255,.10);
-      border: 1px solid rgba(255,255,255,.14);
-      backdrop-filter: blur(16px);
-      -webkit-backdrop-filter: blur(16px);
-      box-shadow: 0 10px 28px rgba(0,0,0,.35);
+      background:rgba(255,255,255,.10);
+      border:1px solid rgba(255,255,255,.14);
+      backdrop-filter:blur(14px);
     }
     .lang button{
-      appearance:none;
       border:0;
-      background: transparent;
-      color: rgba(255,255,255,.78);
-      padding: 8px 12px;
-      border-radius: 999px;
-      font-weight: 700;
-      letter-spacing: .02em;
+      background:none;
+      color:rgba(255,255,255,.8);
+      padding:6px 12px;
+      border-radius:999px;
+      font-weight:700;
       cursor:pointer;
     }
     .lang button.active{
-      background: rgba(255,255,255,.18);
-      color: rgba(255,255,255,.95);
+      background:rgba(255,255,255,.18);
+      color:#fff;
     }
 
     /* ---------- HERO ---------- */
     .hero{
-      position: relative;
-      height: 100vh;
-      height: 100svh;
-      height: calc(var(--vh) * 100);
-      overflow: hidden;
-
+      position:relative;
+      height:100vh;
+      height:100svh;
+      height:calc(var(--vh)*100);
       display:flex;
       align-items:center;
       justify-content:center;
-
-      padding: calc(24px + var(--safe-top)) calc(32px + var(--safe-right))
-               calc(24px + var(--safe-bottom)) calc(32px + var(--safe-left));
+      padding:
+        calc(28px + var(--safe-top))
+        calc(28px + var(--safe-right))
+        calc(28px + var(--safe-bottom))
+        calc(28px + var(--safe-left));
+      overflow:hidden;
       background:#000;
     }
 
@@ -90,182 +87,169 @@
       content:"";
       position:absolute;
       inset:0;
-      background: url("./hero.JPG") center/cover no-repeat;
-      transform: scale(1.08);
-      animation: kenburns 25s ease-in-out infinite alternate;
-      filter: saturate(1.05) contrast(1.02);
+      background:url("./hero.JPG") center/cover no-repeat;
+      transform:scale(1.08);
+      animation:kenburns 25s ease-in-out infinite alternate;
+      filter:saturate(1.05) contrast(1.02);
     }
 
     .hero::after{
       content:"";
       position:absolute;
-      inset:-1px;
+      inset:0;
       background:
-        radial-gradient(1200px 600px at 30% 35%, rgba(0,0,0,.00) 0%, rgba(0,0,0,.35) 55%, rgba(0,0,0,.62) 85%, rgba(0,0,0,.78) 100%),
-        linear-gradient(to bottom, rgba(0,0,0,.55), rgba(0,0,0,.08) 38%, rgba(0,0,0,.22) 70%, rgba(0,0,0,.74));
-      pointer-events:none;
+        radial-gradient(1200px 600px at 30% 35%, rgba(0,0,0,0), rgba(0,0,0,.55)),
+        linear-gradient(to bottom, rgba(0,0,0,.6), rgba(0,0,0,.2), rgba(0,0,0,.75));
     }
 
     @keyframes kenburns{
-      0%   { transform: scale(1.08) translate3d(-1.5%, -1.0%, 0); }
-      100% { transform: scale(1.16) translate3d( 1.5%,  1.0%, 0); }
+      from{ transform:scale(1.08) translate(-1.5%,-1%); }
+      to{ transform:scale(1.16) translate(1.5%,1%); }
     }
 
     .hero-inner{
-      position: relative;
-      z-index: 2;
-      width: min(1200px, 100%);
+      position:relative;
+      z-index:2;
       text-align:center;
+      width:100%;
+      max-width:1200px;
+      margin:0 auto;
     }
 
     .brand{
       margin:0;
-      line-height:.88;
-      font-weight: 900;
-      letter-spacing: -0.03em;
-      text-transform: uppercase;
-      font-size: clamp(110px, 14.5vw, 260px);
-      text-shadow: 0 18px 70px rgba(0,0,0,.55);
+      font-weight:900;
+      text-transform:uppercase;
+      line-height:1;
+      letter-spacing:-0.045em;
+      font-size:clamp(110px,14.5vw,260px);
+      text-shadow:0 18px 70px rgba(0,0,0,.55);
     }
 
     .tagline{
-      margin-top: 14px;
-      font-size: 12px;
-      letter-spacing: .34em;
-      text-transform: uppercase;
-      color: rgba(255,255,255,.60);
+      margin-top:14px;
+      font-size:12px;
+      letter-spacing:.32em;
+      color:rgba(255,255,255,.65);
     }
 
     .scroll{
-      margin-top: 22px;
+      margin-top:22px;
       display:inline-flex;
       align-items:center;
       gap:10px;
-      color: rgba(255,255,255,.60);
-      font-size: 12px;
-      letter-spacing: .22em;
-      text-transform: uppercase;
-      user-select:none;
+      font-size:12px;
+      letter-spacing:.22em;
+      color:rgba(255,255,255,.6);
       cursor:pointer;
     }
     .scroll .dot{
-      width:8px;height:8px;border-radius:999px;
-      background: rgba(255,255,255,.65);
-      box-shadow: 0 0 0 6px rgba(255,255,255,.10);
-      animation: pulse 1.8s ease-in-out infinite;
+      width:8px;height:8px;border-radius:50%;
+      background:rgba(255,255,255,.7);
+      box-shadow:0 0 0 6px rgba(255,255,255,.12);
+      animation:pulse 1.8s ease-in-out infinite;
     }
     @keyframes pulse{
-      0%,100%{ transform: translateY(0); opacity:.85; }
-      50%{ transform: translateY(6px); opacity:.55; }
+      0%,100%{ opacity:.9; transform:translateY(0); }
+      50%{ opacity:.55; transform:translateY(6px); }
     }
 
-    /* ---------- SECTION 2 ---------- */
+    /* ---------- INFO ---------- */
     .section{
-      padding: 56px calc(28px + var(--safe-left)) calc(72px + var(--safe-bottom)) calc(28px + var(--safe-right));
-      background:
-        radial-gradient(900px 500px at 35% 0%, rgba(255,255,255,.06), rgba(0,0,0,0) 60%),
-        linear-gradient(#000,#000);
+      padding:64px 28px 80px;
+      background:#000;
     }
     .wrap{
-      width:min(1200px,100%);
+      max-width:1200px;
       margin:0 auto;
     }
 
-    /* ✅ grid：桌面 + iPad 横屏左右，手机才上下 */
     .grid{
       display:grid;
-      grid-template-columns: 1fr 1fr;
+      grid-template-columns:1fr 1fr;
       gap:28px;
-      align-items: stretch;
     }
-    @media (max-width: 640px){
-  /* 关键：手机端减少左右留白，否则 KOICOIN 容易超出 */
-  .hero{
-    padding-left:  calc(16px + var(--safe-left));
-    padding-right: calc(16px + var(--safe-right));
-  }
-
-  /* 关键：标题略缩小，保证右侧 N 不被切 */
-  .brand{
-    font-size: clamp(72px, 15vw, 150px);
-    line-height: 1;
-  }
-
-  /* 可选：给内容一点内边距，避免贴边 */
-  .hero-inner{
-    padding: 0 4px;
-  }
-}
 
     .card{
-      border-radius: var(--radius);
-      background: linear-gradient(180deg, rgba(255,255,255,.10), rgba(255,255,255,.06));
-      border: 1px solid rgba(255,255,255,.12);
-      box-shadow: var(--shadow);
-      backdrop-filter: blur(18px);
-      -webkit-backdrop-filter: blur(18px);
-      padding: 26px 28px;
-      min-height: 168px;
+      padding:26px 28px;
+      border-radius:var(--radius);
+      background:linear-gradient(180deg,rgba(255,255,255,.10),rgba(255,255,255,.06));
+      border:1px solid rgba(255,255,255,.12);
+      box-shadow:var(--shadow);
+      backdrop-filter:blur(18px);
     }
 
     .kicker{
-      margin: 0 0 14px 0;
-      font-size: 12px;
-      letter-spacing: .28em;
-      text-transform: uppercase;
-      color: rgba(255,255,255,.55);
+      margin:0 0 14px;
+      font-size:12px;
+      letter-spacing:.28em;
+      color:rgba(255,255,255,.55);
     }
 
     .row{
       display:grid;
-      grid-template-columns: 90px 1fr;
+      grid-template-columns:90px 1fr;
       gap:14px;
-      align-items: baseline;
-      margin: 10px 0;
+      margin:10px 0;
     }
 
     .label{
-      font-size: 12px;
-      letter-spacing: .22em;
-      text-transform: uppercase;
-      color: rgba(255,255,255,.48);
-      white-space: nowrap;
+      font-size:12px;
+      letter-spacing:.22em;
+      color:rgba(255,255,255,.5);
     }
 
     .value{
-      font-size: 20px;
-      font-weight: 800;
-      color: rgba(255,255,255,.92);
-      line-height: 1.25;
+      font-size:20px;
+      font-weight:800;
     }
-
     .value.small{
-      font-size: 18px;
-      font-weight: 700;
-      color: rgba(255,255,255,.82);
+      font-size:18px;
+      font-weight:700;
+      opacity:.85;
     }
 
-    @media (prefers-reduced-motion: reduce){
-      .hero::before{ animation:none; transform: scale(1.1); }
-      .scroll .dot{ animation:none; }
-      html{ scroll-behavior:auto; }
+    /* ---------- MOBILE ---------- */
+    @media (max-width:640px){
+      .hero{
+        padding-left:calc(14px + var(--safe-left));
+        padding-right:calc(14px + var(--safe-right));
+      }
+      .brand{
+        font-size:clamp(78px,16vw,150px);
+        letter-spacing:-0.05em;
+      }
+      .grid{
+        grid-template-columns:1fr;
+        gap:22px;
+      }
+      .section{
+        padding:40px 18px 56px;
+      }
+      .row{
+        grid-template-columns:78px 1fr;
+      }
+      .value{ font-size:18px; }
+      .value.small{ font-size:16px; }
     }
+
     html{ scroll-behavior:smooth; }
   </style>
 </head>
 
 <body>
-  <div class="lang" role="group" aria-label="Language">
-    <button type="button" class="active" data-lang="zh">中文</button>
-    <button type="button" data-lang="en">EN</button>
+
+  <div class="lang">
+    <button class="active" data-lang="zh">中文</button>
+    <button data-lang="en">EN</button>
   </div>
 
-  <section class="hero" aria-label="Hero">
+  <section class="hero">
     <div class="hero-inner">
       <h1 class="brand">KOICOIN</h1>
       <div class="tagline" data-i18n="tagline">咖啡 · KTV · 酒吧</div>
-      <div class="scroll" role="button" tabindex="0" id="scrollBtn" aria-label="Scroll">
-        <span class="dot" aria-hidden="true"></span>
+      <div class="scroll" id="scrollBtn">
+        <span class="dot"></span>
         <span data-i18n="scroll">滑动</span>
       </div>
     </div>
@@ -275,39 +259,27 @@
     <div class="wrap">
       <div class="grid">
 
-        <!-- LEFT CARD -->
         <div class="card">
-          <p class="kicker" data-i18n="contact_kicker">预约 / 咨询</p>
-
-          <!-- WeChat TOP -->
+          <p class="kicker" data-i18n="contact">预约 / 咨询</p>
           <div class="row">
-            <div class="label" data-i18n="wechat_label">微信</div>
+            <div class="label">微信</div>
             <div class="value small">koicoin_nz</div>
           </div>
-
-          <!-- Phone BOTTOM -->
           <div class="row">
-            <div class="label" data-i18n="phone_label">电话</div>
-            <div class="value">
-              <a class="phone-link" href="tel:+64273322466">027 332 2466</a>
-            </div>
+            <div class="label">电话</div>
+            <div class="value">027 332 2466</div>
           </div>
         </div>
 
-        <!-- RIGHT CARD -->
         <div class="card">
-          <p class="kicker" data-i18n="info_kicker">信息</p>
-
-          <!-- Hours TOP -->
+          <p class="kicker" data-i18n="info">信息</p>
           <div class="row">
-            <div class="label" data-i18n="hours_label">营业时间</div>
-            <div class="value" data-i18n="hours_value">11am – 3am</div>
+            <div class="label">时间</div>
+            <div class="value">11am – 3am</div>
           </div>
-
-          <!-- Address BOTTOM -->
           <div class="row">
-            <div class="label" data-i18n="address_label">地址</div>
-            <div class="value small" data-i18n="address_value">260 Oteha Valley Road, Albany, Auckland</div>
+            <div class="label">地址</div>
+            <div class="value small">260 Oteha Valley Road, Albany, Auckland</div>
           </div>
         </div>
 
@@ -316,69 +288,36 @@
   </section>
 
   <script>
-    // Fix iOS viewport height
+    // viewport fix
     function setVh(){
-      const vh = window.innerHeight * 0.01;
-      document.documentElement.style.setProperty('--vh', `${vh}px`);
+      document.documentElement.style.setProperty('--vh', `${window.innerHeight*0.01}px`);
     }
-    setVh();
-    window.addEventListener('resize', setVh);
+    setVh(); window.addEventListener('resize', setVh);
 
-    // Scroll button
-    const scrollBtn = document.getElementById('scrollBtn');
-    function goInfo(){ document.getElementById('info').scrollIntoView({behavior:'smooth'}); }
-    scrollBtn.addEventListener('click', goInfo);
-    scrollBtn.addEventListener('keydown', (e)=>{ if(e.key === 'Enter' || e.key === ' ') goInfo(); });
-
-    // i18n
-    const dict = {
-      zh: {
-        scroll: "",
-        tagline: "CAFE · KTV · BAR",
-        contact_kicker: "预约 / 咨询",
-        phone_label: "电话",
-        wechat_label: "微信",
-        info_kicker: "信息",
-        address_label: "地址",
-        address_value: "260 Oteha Valley Road, Albany, Auckland",
-        hours_label: "营业时间",
-        hours_value: "11am – 3am"
-      },
-      en: {
-        scroll: "",
-        tagline: "CAFE · KTV · BAR",
-        contact_kicker: "CONTACT",
-        phone_label: "PHONE",
-        wechat_label: "WECHAT",
-        info_kicker: "INFO",
-        address_label: "ADDRESS",
-        address_value: "260 Oteha Valley Road, Albany, Auckland",
-        hours_label: "HOURS",
-        hours_value: "11am – 3am"
-      }
+    // scroll
+    document.getElementById('scrollBtn').onclick=()=>{
+      document.getElementById('info').scrollIntoView({behavior:'smooth'});
     };
 
-    function setLang(lang){
-      const data = dict[lang] || dict.en;
-
+    // i18n
+    const dict={
+      zh:{ tagline:"CAFE · KTV · BAR", scroll:"", contact:"预约 / 咨询", info:"信息" },
+      en:{ tagline:"CAFE · KTV · BAR", scroll:"", contact:"CONTACT", info:"INFO" }
+    };
+    function setLang(l){
       document.querySelectorAll('[data-i18n]').forEach(el=>{
-        const key = el.getAttribute('data-i18n');
-        if (data[key] != null) el.textContent = data[key];
+        el.textContent=dict[l][el.dataset.i18n];
       });
-
-      document.querySelectorAll('.lang button').forEach(btn=>{
-        btn.classList.toggle('active', btn.dataset.lang === lang);
+      document.querySelectorAll('.lang button').forEach(b=>{
+        b.classList.toggle('active', b.dataset.lang===l);
       });
-
-      localStorage.setItem('koicoin_lang', lang);
-      document.documentElement.lang = (lang === 'zh') ? 'zh' : 'en';
+      localStorage.setItem('lang',l);
     }
-
-    document.querySelectorAll('.lang button').forEach(btn=>{
-      btn.addEventListener('click', ()=> setLang(btn.dataset.lang));
+    document.querySelectorAll('.lang button').forEach(b=>{
+      b.onclick=()=>setLang(b.dataset.lang);
     });
-
-    setLang(localStorage.getItem('koicoin_lang') || 'zh');
+    setLang(localStorage.getItem('lang')||'zh');
   </script>
+
 </body>
 </html>
