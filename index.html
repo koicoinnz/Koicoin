@@ -1,196 +1,327 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="zh">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>KOICOIN</title>
 
   <style>
-    /* ===== Reset ===== */
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
+    :root{
+      --bg: #05070b;
+      --text: rgba(255,255,255,.92);
+      --muted: rgba(255,255,255,.62);
+      --card: rgba(10,16,26,.28);
+      --stroke: rgba(255,255,255,.12);
+      --shadow: 0 24px 80px rgba(0,0,0,.45);
+      --blur: 18px;
+      --radius: 22px;
     }
 
-    html, body {
-      height: 100%;
-      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI",
-                   "PingFang SC", "Helvetica Neue", Arial, sans-serif;
-      background: #06080c;
-      color: #ffffff;
-      overflow-x: hidden;
+    *{box-sizing:border-box}
+    html,body{height:100%}
+    body{
+      margin:0;
+      font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, "Apple Color Emoji","Segoe UI Emoji";
+      color:var(--text);
+      background: var(--bg);
+      overflow-x:hidden;
     }
 
-    /* ===== Hero ===== */
-    .hero {
-      min-height: 100vh;
-      width: 100%;
-      background: url("hero.JPG") center center / cover no-repeat;
-      position: relative;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      padding: 8vh 6vw 14vh;
+    /* ===== HERO ===== */
+    .hero{
+      position:relative;
+      height:100vh;
+      min-height:620px;
+      overflow:hidden;
+      background: var(--bg);
     }
 
-    .hero::after {
-      content: "";
-      position: absolute;
-      inset: 0;
-      background: linear-gradient(
-        to bottom,
-        rgba(0,0,0,0.35),
-        rgba(0,0,0,0.55)
-      );
-      z-index: 0;
+    /* 背景层：25秒慢速流动（稳定不露边） */
+    .hero-bg{
+      position:absolute;
+      inset:-6%;                 /* 关键：动画缩放/位移不露边、不切字 */
+      background:url("hero.JPG") center center / cover no-repeat;
+      animation: heroFlow 25s ease-in-out infinite;
+      will-change: transform;
+      z-index:0;
+      filter: saturate(1.05) contrast(1.02);
     }
 
-    .hero-content {
-      position: relative;
-      z-index: 1;
-      width: 100%;
-      max-width: 1200px;
+    /* 轻微暗角 + 提升文字可读性 */
+    .hero-vignette{
+      position:absolute;
+      inset:0;
+      z-index:1;
+      background:
+        radial-gradient(1200px 700px at 30% 55%, rgba(0,0,0,.15) 0%, rgba(0,0,0,.55) 70%, rgba(0,0,0,.72) 100%),
+        linear-gradient(to bottom, rgba(0,0,0,.25), rgba(0,0,0,.35));
+      pointer-events:none;
     }
 
-    /* ===== Language Switch ===== */
-    .lang {
-      position: absolute;
-      top: 20px;
-      right: 20px;
-      background: rgba(255,255,255,0.12);
-      backdrop-filter: blur(10px);
-      border-radius: 999px;
-      padding: 4px;
-      display: flex;
-      gap: 4px;
-      font-size: 13px;
+    @keyframes heroFlow{
+      0%   { transform: scale(1)    translate(0,0); }
+      50%  { transform: scale(1.06) translate(-1.6%,-1.1%); }
+      100% { transform: scale(1)    translate(0,0); }
     }
 
-    .lang span {
-      padding: 6px 14px;
-      border-radius: 999px;
-      opacity: 0.6;
+    .wrap{
+      position:relative;
+      z-index:2;
+      height:100%;
+      width:min(1200px, 92vw);
+      margin:0 auto;
+      display:flex;
+      flex-direction:column;
+      justify-content:center;
+      gap:22px;
+      padding: 64px 0;
     }
 
-    .lang .active {
-      background: rgba(255,255,255,0.18);
-      opacity: 1;
+    .brand{
+      font-weight: 800;
+      letter-spacing: .02em;
+      font-size: clamp(64px, 10vw, 140px);
+      line-height: .92;
+      margin:0;
+      text-transform: uppercase;
+      text-shadow: 0 18px 60px rgba(0,0,0,.55);
     }
 
-    /* ===== Logo ===== */
-    .logo {
-      font-size: clamp(56px, 14vw, 160px);
-      font-weight: 700;
-      letter-spacing: 0.08em;
-      line-height: 1;
-      margin-bottom: 12px;
-      white-space: nowrap;
-    }
-
-    .tagline {
+    .tagline{
+      margin: 6px 0 0;
+      color: rgba(255,255,255,.55);
       font-size: 14px;
-      letter-spacing: 0.28em;
-      opacity: 0.7;
-      margin-bottom: 64px;
+      letter-spacing: .26em;
+      text-transform: uppercase;
     }
 
-    /* ===== Info Cards ===== */
-    .cards {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
-      gap: 18px;
-      max-width: 720px;
+    /* ===== 语言切换（无顶栏，右上浮动） ===== */
+    .lang{
+      position:fixed;
+      top: 20px;
+      right: 18px;
+      z-index:10;
+      display:flex;
+      gap:8px;
+      padding: 8px;
+      border-radius: 999px;
+      background: rgba(10,16,26,.35);
+      border: 1px solid rgba(255,255,255,.14);
+      backdrop-filter: blur(14px);
+      -webkit-backdrop-filter: blur(14px);
+    }
+    .lang button{
+      border:0;
+      background:transparent;
+      color: rgba(255,255,255,.75);
+      font-weight:600;
+      padding: 8px 12px;
+      border-radius: 999px;
+      cursor:pointer;
+    }
+    .lang button.active{
+      background: rgba(255,255,255,.14);
+      color: rgba(255,255,255,.95);
     }
 
-    .card {
-      background: rgba(255,255,255,0.08);
-      border-radius: 20px;
-      padding: 18px 20px;
-      backdrop-filter: blur(16px);
+    /* ===== 信息卡片（桌面：4格；手机：底部固定电话/微信） ===== */
+    .grid{
+      margin-top: 26px;
+      display:grid;
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+      gap: 14px;
+      width: min(980px, 92vw);
     }
 
-    .card h4 {
+    .card{
+      background: var(--card);
+      border: 1px solid var(--stroke);
+      border-radius: var(--radius);
+      backdrop-filter: blur(var(--blur));
+      -webkit-backdrop-filter: blur(var(--blur));
+      box-shadow: var(--shadow);
+      padding: 16px 16px 14px;
+      min-height: 82px;
+      transition: transform .25s ease, border-color .25s ease, box-shadow .25s ease;
+    }
+
+    .label{
+      color: rgba(255,255,255,.45);
       font-size: 12px;
-      letter-spacing: 0.2em;
-      opacity: 0.6;
-      margin-bottom: 8px;
+      letter-spacing: .22em;
+      text-transform: uppercase;
+      margin:0 0 8px;
     }
 
-    .card p {
-      font-size: 16px;
-      font-weight: 500;
+    .value{
+      margin:0;
+      font-size: 18px;
+      font-weight: 650;
+      letter-spacing:.01em;
+      color: rgba(255,255,255,.92);
+      word-break: break-word;
     }
 
-    /* ===== Footer ===== */
-    footer {
-      position: absolute;
-      bottom: 18px;
-      left: 0;
-      width: 100%;
-      text-align: center;
+    /* 桌面 hover 微光 */
+    @media (hover:hover){
+      .card:hover{
+        transform: translateY(-2px);
+        border-color: rgba(255,255,255,.22);
+        box-shadow: 0 28px 90px rgba(0,0,0,.55);
+      }
+    }
+
+    /* 电话链接不要变蓝/下划线 */
+    a.clean{
+      color: inherit;
+      text-decoration: none;
+    }
+
+    /* 页脚极简 */
+    .footer{
+      position:absolute;
+      left:0; right:0; bottom:18px;
+      z-index:2;
+      width:min(1200px, 92vw);
+      margin:0 auto;
+      color: rgba(255,255,255,.45);
       font-size: 12px;
-      opacity: 0.35;
+      letter-spacing:.08em;
+      display:flex;
+      justify-content:space-between;
+      pointer-events:none;
     }
 
-    /* ===== Mobile ===== */
-    @media (max-width: 768px) {
-      .hero {
-        padding: 10vh 6vw 18vh;
+    /* ===== 手机：改成底部固定一行 Phone/WeChat（极简不破坏） ===== */
+    @media (max-width: 720px){
+      .wrap{ padding: 78px 0 120px; }
+      .grid{
+        grid-template-columns: 1fr;
+        width: 92vw;
+        margin-top: 18px;
+        display:none; /* 手机隐藏桌面四卡 */
       }
+      .footer{ display:none; }
 
-      .logo {
-        font-size: 14vw;
-        letter-spacing: 0.06em;
+      .mobile-bar{
+        position: fixed;
+        left: 14px;
+        right: 14px;
+        bottom: 18px;
+        z-index: 12;
+        display:flex;
+        gap: 12px;
       }
-
-      .tagline {
-        font-size: 12px;
-        margin-bottom: 48px;
+      .mobile-pill{
+        flex:1;
+        background: rgba(10,16,26,.35);
+        border: 1px solid rgba(255,255,255,.16);
+        border-radius: 18px;
+        backdrop-filter: blur(16px);
+        -webkit-backdrop-filter: blur(16px);
+        box-shadow: 0 20px 70px rgba(0,0,0,.55);
+        padding: 14px 14px 12px;
       }
+      .mobile-pill .label{ margin-bottom:6px; }
+      .mobile-pill .value{ font-size: 18px; }
     }
   </style>
 </head>
 
 <body>
+  <!-- 语言切换（无顶栏） -->
+  <div class="lang" role="group" aria-label="Language switch">
+    <button id="btn-zh" class="active" type="button">中文</button>
+    <button id="btn-en" type="button">EN</button>
+  </div>
 
   <section class="hero">
-    <div class="lang">
-      <span class="active">中文</span>
-      <span>EN</span>
-    </div>
+    <div class="hero-bg"></div>
+    <div class="hero-vignette"></div>
 
-    <div class="hero-content">
-      <div class="logo">KOICOIN</div>
-      <div class="tagline">CAFE · KTV · BAR</div>
+    <div class="wrap">
+      <div>
+        <h1 class="brand">KOICOIN</h1>
+        <p class="tagline" data-i18n="tagline">CAFE · KTV · BAR</p>
+      </div>
 
-      <div class="cards">
+      <!-- 桌面：四卡 -->
+      <div class="grid">
         <div class="card">
-          <h4>PHONE</h4>
-          <p>027 332 2466</p>
+          <p class="label" data-i18n="phoneLabel">Phone</p>
+          <p class="value"><a class="clean" href="tel:+64273322466">027 332 2466</a></p>
         </div>
-
         <div class="card">
-          <h4>WECHAT</h4>
-          <p>koicoin_nz</p>
+          <p class="label">WeChat</p>
+          <p class="value">koicoin_nz</p>
         </div>
-
         <div class="card">
-          <h4>ADDRESS</h4>
-          <p>260 Oteha Valley Road, Albany, Auckland</p>
+          <p class="label" data-i18n="addrLabel">Address</p>
+          <p class="value">260 Oteha Valley Road, Albany, Auckland</p>
         </div>
-
         <div class="card">
-          <h4>HOURS</h4>
-          <p>11am – 3am</p>
+          <p class="label" data-i18n="hoursLabel">Hours</p>
+          <p class="value">11am – 3am</p>
         </div>
       </div>
     </div>
 
-    <footer>
-      KOICOIN · Albany · Auckland
-    </footer>
+    <!-- 手机：底部固定一行（Phone/WeChat） -->
+    <div class="mobile-bar" aria-label="Quick contact">
+      <div class="mobile-pill">
+        <p class="label" data-i18n="phoneLabel">Phone</p>
+        <p class="value"><a class="clean" href="tel:+64273322466">027 332 2466</a></p>
+      </div>
+      <div class="mobile-pill">
+        <p class="label">WeChat</p>
+        <p class="value">koicoin_nz</p>
+      </div>
+    </div>
+
+    <div class="footer">
+      <div>KOICOIN</div>
+      <div>Albany · Auckland</div>
+    </div>
   </section>
 
+  <script>
+    // 语言切换：只改文案，不改布局（避免你之前那种“过一下变样”）
+    const dict = {
+      zh: {
+        tagline: "CAFE · KTV · BAR",
+        phoneLabel: "Phone",
+        addrLabel: "地址",
+        hoursLabel: "营业时间",
+      },
+      en: {
+        tagline: "CAFE · KTV · BAR",
+        phoneLabel: "Phone",
+        addrLabel: "Address",
+        hoursLabel: "Hours",
+      }
+    };
+
+    const btnZh = document.getElementById("btn-zh");
+    const btnEn = document.getElementById("btn-en");
+
+    function setLang(lang){
+      document.documentElement.lang = (lang === "zh") ? "zh" : "en";
+      document.querySelectorAll("[data-i18n]").forEach(el=>{
+        const key = el.getAttribute("data-i18n");
+        if(dict[lang][key]) el.textContent = dict[lang][key];
+      });
+
+      btnZh.classList.toggle("active", lang === "zh");
+      btnEn.classList.toggle("active", lang === "en");
+
+      localStorage.setItem("koicoin_lang", lang);
+    }
+
+    btnZh.addEventListener("click", ()=>setLang("zh"));
+    btnEn.addEventListener("click", ()=>setLang("en"));
+
+    const saved = localStorage.getItem("koicoin_lang") || "zh";
+    setLang(saved);
+  </script>
 </body>
 </html>
