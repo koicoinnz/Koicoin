@@ -82,8 +82,11 @@
       height: 100svh;
       height: calc(var(--vh) * 100);
       overflow: hidden;
-      display:flex;
-      align-items: flex-end;
+      .hero{
+  display:flex;
+  align-items: center;     /* 垂直居中 */
+  justify-content: center; /* 水平居中 */
+}
       padding: 0 calc(32px + var(--safe-left)) calc(28px + var(--safe-bottom)) calc(32px + var(--safe-left));
       background: #000;
     }
@@ -128,7 +131,7 @@
       letter-spacing: -0.03em;
       text-transform: uppercase;
       margin: 0;
-      font-size: clamp(64px, 10vw, 168px);
+      font-size: clamp(96px, 14vw, 240px);
       text-shadow: 0 18px 70px rgba(0,0,0,.55);
     }
 
@@ -363,7 +366,7 @@
         contact_kicker: "CONTACT",
         phone_label: "PHONE",
         wechat_label: "WECHAT",
-        contact_note: "For bookings & enquiries.",
+        
         info_kicker: "INFO",
         address_label: "ADDRESS",
         address_value: "260 Oteha Valley Road, Albany, Auckland",
