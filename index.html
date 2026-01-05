@@ -249,15 +249,32 @@
       margin: 16px 0 6px;
     }
 
-    /* Responsive */
-    @media (max-width: 860px){
-      .hero{ padding-left: calc(20px + var(--safe-left)); padding-right: calc(20px + var(--safe-right)); }
-      .section{ padding-left: calc(18px + var(--safe-left)); padding-right: calc(18px + var(--safe-right)); }
-      .grid{ grid-template-columns: 1fr; }
-      .row{ grid-template-columns: 84px 1fr; }
-      .value{ font-size: 19px; }
-      .value.small{ font-size: 17px; }
-      .brand{ font-size: clamp(72px, 16vw, 160px); } /* 手机别太爆 */
+   /* ===============================
+   INFO GRID – responsive control
+   =============================== */
+
+/* 默认：桌面 & iPad 横屏 = 左右 */
+.grid{
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 28px;
+}
+
+/* iPad 竖屏（可选微调，不改列数） */
+@media (max-width: 820px){
+  .grid{
+    grid-template-columns: 1fr 1fr;
+    gap: 24px;
+  }
+}
+
+/* 手机才上下 */
+@media (max-width: 640px){
+  .grid{
+    grid-template-columns: 1fr;
+    gap: 36px;
+  }
+}
     }
 
     /* Reduce motion accessibility */
