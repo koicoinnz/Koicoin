@@ -9,17 +9,14 @@
   <style>
     :root{
       --bg:#070A12;
-      --card: rgba(255,255,255,.08);
-      --card2: rgba(255,255,255,.06);
-      --stroke: rgba(255,255,255,.12);
       --text: rgba(255,255,255,.92);
-      --muted: rgba(255,255,255,.62);
-      --muted2: rgba(255,255,255,.45);
-      --shadow: 0 24px 80px rgba(0,0,0,.55);
+      --muted: rgba(255,255,255,.58);
+      --stroke: rgba(255,255,255,.12);
+      --cardA: rgba(255,255,255,.10);
+      --cardB: rgba(255,255,255,.06);
+      --shadow: 0 24px 90px rgba(0,0,0,.58);
       --blur: 18px;
       --r: 22px;
-      --r2: 18px;
-      --pad: 22px;
     }
 
     *{ box-sizing:border-box; }
@@ -31,69 +28,15 @@
       color: var(--text);
       overflow-x:hidden;
     }
-
     a{ color:inherit; text-decoration:none; }
     a:visited{ color:inherit; }
 
-    /* Fullscreen hero */
-    .hero{
-      min-height: 100vh;
-      min-height: 100svh;
-      position: relative;
-      display:flex;
-      align-items:center;
-      justify-content:center;
-      isolation:isolate;
-      padding: max(18px, env(safe-area-inset-top)) max(18px, env(safe-area-inset-right)) max(18px, env(safe-area-inset-bottom)) max(18px, env(safe-area-inset-left));
-    }
-
-    /* Background image */
-    .hero::before{
-      content:"";
-      position:absolute;
-      inset:0;
-      background:
-        radial-gradient(1200px 700px at 20% 10%, rgba(10,90,255,.18), transparent 60%),
-        radial-gradient(900px 600px at 80% 40%, rgba(0,200,255,.10), transparent 55%),
-        linear-gradient(to bottom, rgba(7,10,18,.30), rgba(7,10,18,.78));
-      z-index:-2;
-      pointer-events:none;
-    }
-
-    .heroBg{
-      position:absolute;
-      inset:-2%;
-      background-image: url("assets/images/hero.JPG");
-      background-size: cover;
-      background-position: center;
-      filter: saturate(1.05) contrast(1.02);
-      transform: scale(1.06);
-      z-index:-3;
-      animation: heroMove 25s linear infinite alternate;
-      will-change: transform, background-position;
-    }
-
-    @keyframes heroMove{
-      0%   { transform: scale(1.06) translate3d(0,0,0);   background-position: 45% 45%; }
-      100% { transform: scale(1.10) translate3d(-0.6%,0.4%,0); background-position: 55% 52%; }
-    }
-
-    /* Optional subtle vignette */
-    .vignette{
-      position:absolute;
-      inset:0;
-      background: radial-gradient(1200px 800px at 50% 40%, rgba(0,0,0,0), rgba(0,0,0,.55));
-      z-index:-1;
-      pointer-events:none;
-    }
-
-    /* Language toggle (top-right floating) */
+    /* ===== Language toggle (floating, no top bar) ===== */
     .lang{
       position: fixed;
       top: max(14px, env(safe-area-inset-top));
       right: max(14px, env(safe-area-inset-right));
       z-index: 50;
-
       display:flex;
       gap:6px;
       padding: 6px;
@@ -110,8 +53,8 @@
       cursor:pointer;
       padding: 10px 14px;
       border-radius: 999px;
-      color: rgba(255,255,255,.78);
       background: transparent;
+      color: rgba(255,255,255,.78);
       font-weight: 650;
       letter-spacing:.02em;
       transition: transform .18s ease, background .18s ease, color .18s ease;
@@ -122,306 +65,297 @@
       color: rgba(255,255,255,.92);
     }
 
-    /* Center content */
-    .center{
-      width:min(1100px, 100%);
+    /* ===== HERO: full screen, big title like your screenshot ===== */
+    .hero{
+      min-height: 100vh;
+      min-height: 100svh;
+      position: relative;
       display:flex;
-      flex-direction:column;
-      align-items:flex-start;
-      justify-content:center;
-      gap: 18px;
-      padding-top: 8vh;
-      padding-bottom: 14vh; /* leave room for mobile fixed bar */
+      align-items:flex-end;
+      padding: 0 max(18px, env(safe-area-inset-right)) max(22px, env(safe-area-inset-bottom)) max(18px, env(safe-area-inset-left));
+      isolation:isolate;
     }
 
-    .brand{
-      display:flex;
-      flex-direction:column;
-      gap: 10px;
-      align-items:flex-start;
+    .heroBg{
+      position:absolute;
+      inset:-2%;
+      background-image: url("assets/images/hero.JPG");
+      background-size: cover;
+      background-position: center;
+      transform: scale(1.06);
+      z-index:-3;
+      animation: heroMove 25s linear infinite alternate;
+      will-change: transform, background-position;
+      filter: saturate(1.05) contrast(1.02);
+    }
+    @keyframes heroMove{
+      0%   { transform: scale(1.06) translate3d(0,0,0); background-position: 46% 46%; }
+      100% { transform: scale(1.10) translate3d(-0.6%,0.4%,0); background-position: 55% 52%; }
     }
 
+    .hero::before{
+      content:"";
+      position:absolute;
+      inset:0;
+      z-index:-2;
+      background:
+        linear-gradient(to bottom, rgba(7,10,18,.20), rgba(7,10,18,.55) 55%, rgba(7,10,18,.88));
+      pointer-events:none;
+    }
+
+    .brandWrap{
+      width:min(1200px, 100%);
+      margin: 0 auto;
+      padding-bottom: 6vh; /* 让大字靠下但不贴底 */
+    }
+
+    /* 大标题：接近你截图的比例 */
     .title{
       margin:0;
-      line-height: .88;
+      line-height: .86;
       letter-spacing: -0.02em;
       font-weight: 900;
-      font-size: clamp(64px, 9vw, 150px);
       text-transform: uppercase;
+      font-size: clamp(84px, 12vw, 190px);
       color: rgba(255,255,255,.92);
       text-shadow: 0 18px 70px rgba(0,0,0,.55);
     }
 
     .tagline{
+      margin-top: 10px;
+      margin-left: 6px;
       font-size: 12px;
       letter-spacing: .42em;
       text-transform: uppercase;
-      color: rgba(255,255,255,.55);
-      margin-left: 4px;
+      color: rgba(255,255,255,.52);
     }
 
-    /* Info cards (desktop) */
-    .cards{
-      margin-top: 18px;
-      display:grid;
-      grid-template-columns: repeat(4, minmax(0, 1fr));
-      gap: 14px;
-      width:min(1000px, 100%);
+    /* ===== Section below hero: two horizontal cards (2 rows) ===== */
+    .below{
+      position: relative;
+      padding: 28px max(18px, env(safe-area-inset-right)) 70px max(18px, env(safe-area-inset-left));
+      background: radial-gradient(1200px 700px at 50% 0%, rgba(0,140,255,.10), transparent 60%),
+                  linear-gradient(to bottom, rgba(7,10,18,.92), rgba(7,10,18,1));
+    }
+    .container{
+      width:min(1200px, 100%);
+      margin: 0 auto;
     }
 
-    .card{
-      position:relative;
-      padding: 16px 16px 14px;
+    .rowCard{
+      position: relative;
+      padding: 22px 22px;
       border-radius: var(--r);
-      background: linear-gradient(to bottom, rgba(255,255,255,.10), rgba(255,255,255,.06));
-      border: 1px solid rgba(255,255,255,.12);
+      background: linear-gradient(to bottom, var(--cardA), var(--cardB));
+      border: 1px solid var(--stroke);
       box-shadow: var(--shadow);
       backdrop-filter: blur(var(--blur));
       -webkit-backdrop-filter: blur(var(--blur));
-      transition: transform .24s ease, box-shadow .24s ease, border-color .24s ease;
       overflow:hidden;
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      gap: 18px;
+      margin-bottom: 14px;
     }
-
-    .card::before{
+    .rowCard::before{
       content:"";
       position:absolute;
       inset:-1px;
       border-radius: inherit;
-      background: radial-gradient(500px 260px at 20% 10%, rgba(255,255,255,.14), transparent 60%);
+      background: radial-gradient(700px 260px at 18% 0%, rgba(255,255,255,.16), transparent 60%);
       opacity:.55;
       pointer-events:none;
     }
 
-    /* Desktop hover micro glow */
+    /* desktop hover 微光 */
     @media (hover:hover) and (pointer:fine){
-      .card:hover{
-        transform: translateY(-2px);
+      .rowCard:hover{
         border-color: rgba(255,255,255,.20);
-        box-shadow: 0 26px 90px rgba(0,0,0,.60);
+        box-shadow: 0 28px 95px rgba(0,0,0,.62);
       }
-      .card:hover::after{
+      .rowCard:hover::after{
         content:"";
         position:absolute;
         inset:-2px;
         border-radius: inherit;
         pointer-events:none;
-        background: radial-gradient(500px 220px at 50% 0%, rgba(120,200,255,.14), transparent 55%);
+        background: radial-gradient(700px 240px at 50% 0%, rgba(120,200,255,.14), transparent 60%);
         mix-blend-mode: screen;
-        opacity:.8;
+        opacity:.85;
       }
     }
 
+    .left{
+      display:flex;
+      flex-direction:column;
+      gap: 10px;
+      min-width: 210px;
+    }
     .k{
       font-size: 11px;
       letter-spacing: .32em;
       text-transform: uppercase;
-      color: rgba(255,255,255,.48);
-      margin: 0 0 8px 0;
+      color: rgba(255,255,255,.46);
     }
-
     .v{
-      font-size: 18px;
+      font-size: 22px;
       font-weight: 800;
       color: rgba(255,255,255,.92);
-      margin:0;
     }
-
-    .v.small{
-      font-size: 16px;
-      font-weight: 750;
+    .right{
+      display:flex;
+      flex-direction:column;
+      gap: 10px;
+      text-align:right;
+      flex:1;
+    }
+    .muted{
+      color: rgba(255,255,255,.58);
+      font-weight: 650;
+      font-size: 14px;
+      letter-spacing:.02em;
+    }
+    .big{
+      font-size: 18px;
+      font-weight: 760;
       color: rgba(255,255,255,.90);
       line-height:1.25;
     }
 
-    /* Footer micro */
-    .footer{
-      position: fixed;
-      left: max(14px, env(safe-area-inset-left));
-      bottom: max(14px, env(safe-area-inset-bottom));
-      z-index: 40;
-      color: rgba(255,255,255,.45);
+    /* phone link disable blue */
+    .rowCard a{ color:inherit; text-decoration:none; }
+    .rowCard a:visited{ color:inherit; }
+
+    /* ===== Mobile tweaks ===== */
+    @media (max-width: 640px){
+      .brandWrap{ padding-bottom: 5vh; }
+      .title{ font-size: clamp(64px, 16vw, 96px); }
+      .tagline{ font-size: 11px; letter-spacing: .38em; }
+
+      .rowCard{
+        padding: 18px 18px;
+      }
+      .v{ font-size: 20px; }
+      .big{ font-size: 16px; }
+    }
+
+    @media (prefers-reduced-motion: reduce){
+      .heroBg{ animation:none; }
+    }
+
+    /* Small footer text */
+    .foot{
+      margin-top: 14px;
+      color: rgba(255,255,255,.40);
       font-size: 12px;
       letter-spacing: .10em;
       text-transform: uppercase;
-      mix-blend-mode: screen;
-      opacity:.85;
-      pointer-events:none;
-    }
-
-    /* Mobile: simplify layout + fixed contact bar */
-    .mobileBar{
-      display:none;
-      position: fixed;
-      left: max(14px, env(safe-area-inset-left));
-      right: max(14px, env(safe-area-inset-right));
-      bottom: max(14px, env(safe-area-inset-bottom));
-      z-index: 60;
-
-      gap: 12px;
-      align-items: stretch;
-      justify-content: space-between;
-    }
-
-    .pill{
-      flex:1;
-      padding: 14px 16px;
-      border-radius: 18px;
-      background: rgba(255,255,255,.10);
-      border: 1px solid rgba(255,255,255,.14);
-      backdrop-filter: blur(var(--blur));
-      -webkit-backdrop-filter: blur(var(--blur));
-      box-shadow: 0 18px 70px rgba(0,0,0,.55);
-      display:flex;
-      flex-direction:column;
-      gap: 8px;
-      min-height: 66px;
-    }
-
-    .pill .k{ margin:0; }
-    .pill .v{ margin:0; }
-
-    /* Responsive */
-    @media (max-width: 980px){
-      .cards{ grid-template-columns: repeat(2, minmax(0, 1fr)); }
-    }
-    @media (max-width: 620px){
-      .center{
-        align-items:flex-start;
-        padding-top: 10vh;
-        padding-bottom: 18vh; /* space for mobile bar */
-      }
-      .cards{ display:none; }      /* hide 4 cards on mobile */
-      .mobileBar{ display:flex; }  /* use fixed bar */
-      .title{
-        font-size: clamp(56px, 14vw, 92px);
-        letter-spacing: -0.015em;
-      }
-      .tagline{
-        font-size: 11px;
-        letter-spacing: .38em;
-      }
-    }
-
-    /* Reduce motion */
-    @media (prefers-reduced-motion: reduce){
-      .heroBg{ animation:none; }
-      .card{ transition:none; }
-      .lang button{ transition:none; }
     }
   </style>
 </head>
 
 <body>
-  <div class="hero">
-    <div class="heroBg" aria-hidden="true"></div>
-    <div class="vignette" aria-hidden="true"></div>
-
-    <!-- Language Toggle -->
-    <div class="lang" role="group" aria-label="Language switch">
-      <button id="btnZH" class="active" type="button">中文</button>
-      <button id="btnEN" type="button">EN</button>
-    </div>
-
-    <main class="center">
-      <div class="brand">
-        <h1 class="title">KOICOIN</h1>
-        <div class="tagline" id="tagline">CAFE · KTV · BAR</div>
-      </div>
-
-      <!-- Desktop info cards -->
-      <section class="cards" aria-label="Key info">
-        <a class="card" href="tel:+64273322466" aria-label="Phone">
-          <p class="k" id="kPhone">PHONE</p>
-          <p class="v">027 332 2466</p>
-        </a>
-
-        <div class="card" aria-label="WeChat">
-          <p class="k" id="kWeChat">WECHAT</p>
-          <p class="v">koicoin_nz</p>
-        </div>
-
-        <div class="card" aria-label="Address">
-          <p class="k" id="kAddress">ADDRESS</p>
-          <p class="v small" id="vAddress">260 Oteha Valley Road, Albany, Auckland</p>
-        </div>
-
-        <div class="card" aria-label="Hours">
-          <p class="k" id="kHours">HOURS</p>
-          <p class="v">11am – 3am</p>
-        </div>
-      </section>
-    </main>
-
-    <!-- Mobile fixed contact bar (minimal) -->
-    <div class="mobileBar" aria-label="Quick contact">
-      <a class="pill" href="tel:+64273322466" aria-label="Phone">
-        <p class="k" id="mPhoneK">PHONE</p>
-        <p class="v">027 332 2466</p>
-      </a>
-
-      <div class="pill" aria-label="WeChat">
-        <p class="k" id="mWeChatK">WECHAT</p>
-        <p class="v">koicoin_nz</p>
-      </div>
-    </div>
-
-    <div class="footer">KOICOIN · Albany · Auckland</div>
+  <!-- Floating language toggle -->
+  <div class="lang" role="group" aria-label="Language switch">
+    <button id="btnZH" class="active" type="button">中文</button>
+    <button id="btnEN" type="button">EN</button>
   </div>
 
+  <!-- HERO -->
+  <section class="hero" aria-label="KOICOIN hero">
+    <div class="heroBg" aria-hidden="true"></div>
+
+    <div class="brandWrap">
+      <h1 class="title">KOICOIN</h1>
+      <div class="tagline" id="tagline">CAFE · KTV · BAR</div>
+    </div>
+  </section>
+
+  <!-- BELOW: 2 horizontal rows (no 4 cards) -->
+  <section class="below" aria-label="Info">
+    <div class="container">
+
+      <!-- Row 1: Reservation / Contact -->
+      <div class="rowCard" aria-label="Contact">
+        <div class="left">
+          <div class="k" id="row1Title">预约 / 咨询</div>
+          <div class="v">
+            <a href="tel:+64273322466" aria-label="Phone">027 332 2466</a>
+          </div>
+        </div>
+
+        <div class="right">
+          <div class="k" id="wechatLabel">WECHAT</div>
+          <div class="big">koicoin_nz</div>
+          <div class="muted" id="phoneLabel">PHONE</div>
+        </div>
+      </div>
+
+      <!-- Row 2: Info -->
+      <div class="rowCard" aria-label="Info">
+        <div class="left">
+          <div class="k" id="addrLabel">地址</div>
+          <div class="big" id="addrText">260 Oteha Valley Road, Albany, Auckland</div>
+        </div>
+
+        <div class="right">
+          <div class="k" id="hoursLabel">营业时间</div>
+          <div class="v">11am – 3am</div>
+        </div>
+      </div>
+
+      <div class="foot">KOICOIN · Albany · Auckland</div>
+    </div>
+  </section>
+
   <script>
-    // Simple i18n (only labels; brand stays KOICOIN)
     const dict = {
       zh: {
-        kPhone: "PHONE",
-        kWeChat: "WECHAT",
-        kAddress: "地址",
-        kHours: "营业时间",
-        mPhoneK: "PHONE",
-        mWeChatK: "WECHAT",
-        address: "260 Oteha Valley Road, Albany, Auckland",
+        htmlLang: "zh",
         tagline: "CAFE · KTV · BAR",
-        htmlLang: "zh"
+        row1Title: "预约 / 咨询",
+        wechatLabel: "WECHAT",
+        phoneLabel: "PHONE",
+        addrLabel: "地址",
+        hoursLabel: "营业时间",
+        addrText: "260 Oteha Valley Road, Albany, Auckland"
       },
       en: {
-        kPhone: "PHONE",
-        kWeChat: "WECHAT",
-        kAddress: "ADDRESS",
-        kHours: "HOURS",
-        mPhoneK: "PHONE",
-        mWeChatK: "WECHAT",
-        address: "260 Oteha Valley Road, Albany, Auckland",
+        htmlLang: "en",
         tagline: "CAFE · KTV · BAR",
-        htmlLang: "en"
+        row1Title: "Booking / Enquiry",
+        wechatLabel: "WECHAT",
+        phoneLabel: "PHONE",
+        addrLabel: "ADDRESS",
+        hoursLabel: "HOURS",
+        addrText: "260 Oteha Valley Road, Albany, Auckland"
       }
     };
 
     const els = {
       btnZH: document.getElementById("btnZH"),
       btnEN: document.getElementById("btnEN"),
-      kPhone: document.getElementById("kPhone"),
-      kWeChat: document.getElementById("kWeChat"),
-      kAddress: document.getElementById("kAddress"),
-      kHours: document.getElementById("kHours"),
-      mPhoneK: document.getElementById("mPhoneK"),
-      mWeChatK: document.getElementById("mWeChatK"),
-      vAddress: document.getElementById("vAddress"),
-      tagline: document.getElementById("tagline")
+      tagline: document.getElementById("tagline"),
+      row1Title: document.getElementById("row1Title"),
+      wechatLabel: document.getElementById("wechatLabel"),
+      phoneLabel: document.getElementById("phoneLabel"),
+      addrLabel: document.getElementById("addrLabel"),
+      hoursLabel: document.getElementById("hoursLabel"),
+      addrText: document.getElementById("addrText")
     };
 
     function setLang(lang){
       const t = dict[lang] || dict.zh;
 
-      els.kPhone.textContent = t.kPhone;
-      els.kWeChat.textContent = t.kWeChat;
-      els.kAddress.textContent = t.kAddress;
-      els.kHours.textContent = t.kHours;
-      els.mPhoneK.textContent = t.mPhoneK;
-      els.mWeChatK.textContent = t.mWeChatK;
-
-      els.vAddress.textContent = t.address;
-      els.tagline.textContent = t.tagline;
-
       document.documentElement.lang = t.htmlLang;
+      els.tagline.textContent = t.tagline;
+      els.row1Title.textContent = t.row1Title;
+      els.wechatLabel.textContent = t.wechatLabel;
+      els.phoneLabel.textContent = t.phoneLabel;
+      els.addrLabel.textContent = t.addrLabel;
+      els.hoursLabel.textContent = t.hoursLabel;
+      els.addrText.textContent = t.addrText;
 
       els.btnZH.classList.toggle("active", lang === "zh");
       els.btnEN.classList.toggle("active", lang === "en");
@@ -432,9 +366,7 @@
     els.btnZH.addEventListener("click", () => setLang("zh"));
     els.btnEN.addEventListener("click", () => setLang("en"));
 
-    // Restore preference
-    const saved = localStorage.getItem("koicoin_lang") || "zh";
-    setLang(saved);
+    setLang(localStorage.getItem("koicoin_lang") || "zh");
   </script>
 </body>
 </html>
