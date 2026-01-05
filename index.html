@@ -179,8 +179,23 @@
       align-items: stretch;
     }
     @media (max-width: 640px){
-      .grid{ grid-template-columns: 1fr; gap:36px; }
-    }
+  /* 关键：手机端减少左右留白，否则 KOICOIN 容易超出 */
+  .hero{
+    padding-left:  calc(16px + var(--safe-left));
+    padding-right: calc(16px + var(--safe-right));
+  }
+
+  /* 关键：标题略缩小，保证右侧 N 不被切 */
+  .brand{
+    font-size: clamp(72px, 15vw, 150px);
+    line-height: 1;
+  }
+
+  /* 可选：给内容一点内边距，避免贴边 */
+  .hero-inner{
+    padding: 0 4px;
+  }
+}
 
     .card{
       border-radius: var(--radius);
