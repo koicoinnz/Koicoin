@@ -1,394 +1,202 @@
-<!doctype html>
-<html lang="zh">
+<!DOCTYPE html>
+<html lang="zh-CN">
 <head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
-  <meta name="theme-color" content="#070A0F" />
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>KOICOIN</title>
 
   <style>
-    :root{
-      --bg:#070A0F;
-      --text: rgba(255,255,255,.95);
-      --muted: rgba(255,255,255,.72);
-      --muted2: rgba(255,255,255,.55);
-      --card: rgba(15,18,26,.55);
-      --card2: rgba(15,18,26,.40);
-      --stroke: rgba(255,255,255,.10);
-      --shadow: 0 24px 80px rgba(0,0,0,.55);
-      --radius: 28px;
-      --max: 1120px;
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
     }
 
-    *{ box-sizing:border-box; }
-    html,body{ height:100%; }
-    body{
-      margin:0;
-      background: var(--bg);
-      color: var(--text);
-      font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, "Apple Color Emoji","Segoe UI Emoji";
-      overflow-x:hidden;
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI",
+        "Helvetica Neue", Arial, sans-serif;
+      background: #000;
+      color: #fff;
+      overflow-x: hidden;
     }
 
-    /* ---------- Language Switch (no top bar, just floating) ---------- */
-    .lang-switch{
+    /* ---------- Language Switch ---------- */
+    .lang-switch {
       position: fixed;
-      top: calc(16px + env(safe-area-inset-top));
-      right: calc(16px + env(safe-area-inset-right));
-      z-index: 50;
-      display: inline-flex;
+      top: 24px;
+      right: 24px;
+      z-index: 20;
+      display: flex;
       gap: 6px;
       padding: 6px;
+      background: rgba(255, 255, 255, 0.12);
+      backdrop-filter: blur(12px);
       border-radius: 999px;
-      background: rgba(255,255,255,.10);
-      border: 1px solid rgba(255,255,255,.12);
-      backdrop-filter: blur(14px);
-      -webkit-backdrop-filter: blur(14px);
-      box-shadow: 0 10px 40px rgba(0,0,0,.35);
     }
-    .lang-switch button{
-      appearance:none;
-      border:0;
-      cursor:pointer;
-      padding: 10px 14px;
-      border-radius: 999px;
-      font-weight: 650;
-      letter-spacing: .01em;
-      color: rgba(255,255,255,.75);
+
+    .lang-switch button {
       background: transparent;
-      transition: .18s ease;
-      font-size: 14px;
-      line-height: 1;
+      border: none;
+      color: #fff;
+      font-size: 13px;
+      padding: 6px 14px;
+      border-radius: 999px;
+      cursor: pointer;
+      opacity: 0.7;
     }
-    .lang-switch button.active{
-      background: rgba(255,255,255,.14);
-      color: rgba(255,255,255,.95);
-      box-shadow: inset 0 0 0 1px rgba(255,255,255,.10);
-    }
-    .lang-switch button:hover{ color: rgba(255,255,255,.92); }
 
-    /* ---------- HERO (full screen) ---------- */
-    .hero{
+    .lang-switch button.active {
+      background: rgba(255, 255, 255, 0.25);
+      opacity: 1;
+    }
+
+    /* ---------- HERO ---------- */
+    .hero {
+      height: 100vh;
+      background: url("hero.JPG") center / cover no-repeat;
       position: relative;
-      height: 100svh;            /* stable on mobile */
-      min-height: 620px;
-      width: 100%;
-      overflow: hidden;
-      background: #0A0E16;
-      isolation: isolate;
+      display: flex;
+      align-items: center;
+      justify-content: center;
     }
 
-    /* Background image layer */
-    .hero::before{
-      content:"";
-      position:absolute;
-      inset:0;
-      background-image: url("hero.JPG");
-      background-size: cover;
-      background-position: 50% 45%;
-      transform: scale(1.08);
-      filter: saturate(1.05) contrast(1.02);
-      animation: slowPan 25s ease-in-out infinite alternate;
-      will-change: background-position, transform;
+    .hero::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(
+        to bottom,
+        rgba(0, 0, 0, 0.25),
+        rgba(0, 0, 0, 0.65)
+      );
     }
 
-    /* Dark/soft overlay to make text premium */
-    .hero::after{
-      content:"";
-      position:absolute;
-      inset:0;
-      background:
-        radial-gradient(1200px 600px at 35% 55%, rgba(255,255,255,.10), rgba(0,0,0,0) 55%),
-        linear-gradient(to bottom, rgba(0,0,0,.30) 0%, rgba(0,0,0,.18) 40%, rgba(0,0,0,.55) 100%);
-      pointer-events:none;
-    }
-
-    @keyframes slowPan{
-      0%   { background-position: 45% 40%; transform: scale(1.08); }
-      100% { background-position: 60% 55%; transform: scale(1.12); }
-    }
-
-    /* Content */
-    .hero-inner{
+    .hero-content {
       position: relative;
       z-index: 2;
-      height: 100%;
-      display: grid;
-      place-items: center;
-      padding: 24px;
-      padding-top: calc(24px + env(safe-area-inset-top));
-      padding-bottom: calc(24px + env(safe-area-inset-bottom));
       text-align: center;
     }
 
-    .brand{
-      width: min(var(--max), 100%);
-      margin: 0 auto;
-      display: grid;
-      gap: 14px;
-      align-items: center;
-      justify-items: center;
-      transform: translateY(2vh); /* slightly lower like your reference */
-    }
-
-    .logo{
-      margin:0;
+    .hero h1 {
+      font-size: clamp(72px, 16vw, 200px);
       font-weight: 900;
-      letter-spacing: -0.035em;
-      line-height: .86;
-      text-transform: uppercase;
-      color: rgba(255,255,255,.96);
-      /* BIG + consistent across sizes */
-      font-size: clamp(88px, 15vw, 220px);
-      text-shadow:
-        0 26px 80px rgba(0,0,0,.55),
-        0 2px 0 rgba(255,255,255,.06);
-      user-select: none;
+      letter-spacing: 0.04em;
     }
 
-    .sub{
-      margin:0;
-      font-size: 13px;
-      letter-spacing: .28em;
-      text-transform: uppercase;
-      color: rgba(255,255,255,.55);
-      text-shadow: 0 10px 40px rgba(0,0,0,.45);
-      user-select: none;
-    }
-
-    /* hint (optional, subtle) */
-    .scroll-hint{
-      position: absolute;
-      bottom: calc(18px + env(safe-area-inset-bottom));
-      left: 50%;
-      transform: translateX(-50%);
-      font-size: 12px;
-      color: rgba(255,255,255,.42);
-      letter-spacing: .16em;
-      text-transform: uppercase;
-      user-select:none;
-      opacity:.85;
-    }
-
-    /* ---------- SECTION (two cards after scroll) ---------- */
-    .section{
-      position: relative;
-      background: radial-gradient(900px 600px at 30% 0%, rgba(255,255,255,.06), rgba(0,0,0,0) 60%), var(--bg);
-      padding: 54px 18px 90px;
-    }
-
-    .wrap{
-      width: min(var(--max), 100%);
-      margin: 0 auto;
-    }
-
-    .cards{
-      display: grid;
-      grid-template-columns: repeat(2, minmax(0, 1fr));
-      gap: 28px;
-      align-items: stretch;
-    }
-
-    .card{
-      border-radius: var(--radius);
-      background: linear-gradient(180deg, var(--card) 0%, var(--card2) 100%);
-      border: 1px solid var(--stroke);
-      box-shadow: var(--shadow);
-      backdrop-filter: blur(18px);
-      -webkit-backdrop-filter: blur(18px);
-      padding: 26px 26px;
-      min-height: 168px;
-      position: relative;
-      overflow: hidden;
-    }
-
-    .card::before{
-      content:"";
-      position:absolute;
-      inset:-40px -40px auto auto;
-      width: 160px;
-      height: 160px;
-      background: radial-gradient(circle at 30% 30%, rgba(255,255,255,.10), rgba(255,255,255,0) 60%);
-      filter: blur(8px);
-      opacity: .65;
-      pointer-events:none;
-    }
-
-    .kicker{
-      margin:0 0 14px 0;
-      font-size: 12px;
-      letter-spacing: .26em;
-      text-transform: uppercase;
-      color: rgba(255,255,255,.55);
-    }
-
-    .rows{
-      display: grid;
-      gap: 10px;
-      margin-top: 10px;
-    }
-
-    .row{
-      display: grid;
-      grid-template-columns: 90px 1fr;
-      gap: 12px;
-      align-items: baseline;
-    }
-
-    .label{
-      color: rgba(255,255,255,.55);
+    .hero p {
+      margin-top: 14px;
       font-size: 14px;
-      letter-spacing: .08em;
-      text-transform: uppercase;
+      letter-spacing: 0.35em;
+      opacity: 0.8;
     }
 
-    .value{
-      font-size: 18px;
-      font-weight: 650;
-      color: rgba(255,255,255,.92);
-      line-height: 1.25;
+    .scroll {
+      position: absolute;
+      bottom: 28px;
+      width: 100%;
+      text-align: center;
+      font-size: 12px;
+      letter-spacing: 0.4em;
+      opacity: 0.5;
+      z-index: 2;
     }
 
-    a.value-link{
-      color: rgba(255,255,255,.92);
-      text-decoration: none;
-      border-bottom: 1px solid rgba(255,255,255,.22);
-      padding-bottom: 2px;
-    }
-    a.value-link:hover{ border-bottom-color: rgba(255,255,255,.55); }
-
-    /* ---------- Responsive ---------- */
-    @media (max-width: 860px){
-      .cards{ grid-template-columns: 1fr; }
-      .card{ min-height: 0; }
-      .logo{ font-size: clamp(72px, 18vw, 130px); }
-      .row{ grid-template-columns: 82px 1fr; }
+    /* ---------- INFO SECTION ---------- */
+    .section {
+      padding: 120px 6vw;
+      background: #000;
     }
 
-    /* Prevent accidental “image missing” white gap */
-    img.preload{
-      position:absolute;
-      width:1px; height:1px;
-      opacity:0;
-      pointer-events:none;
+    .cards {
+      max-width: 1200px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 36px;
+    }
+
+    .card {
+      padding: 42px;
+      background: rgba(255, 255, 255, 0.06);
+      border-radius: 24px;
+      backdrop-filter: blur(16px);
+      box-shadow: 0 20px 60px rgba(0, 0, 0, 0.5);
+    }
+
+    .card h3 {
+      font-size: 12px;
+      letter-spacing: 0.25em;
+      opacity: 0.6;
+      margin-bottom: 20px;
+    }
+
+    .card p {
+      font-size: 20px;
+      line-height: 1.7;
+      font-weight: 600;
+    }
+
+    .card span {
+      display: block;
+      font-size: 16px;
+      font-weight: 400;
+      opacity: 0.75;
+      margin-top: 8px;
+    }
+
+    /* ---------- MOBILE ---------- */
+    @media (max-width: 900px) {
+      .cards {
+        grid-template-columns: 1fr;
+      }
+
+      .section {
+        padding: 80px 20px;
+      }
+
+      .hero h1 {
+        font-size: 64px;
+      }
     }
   </style>
 </head>
 
 <body>
-  <!-- Preload hero to reduce “suddenly change” / blank -->
-  <img class="preload" src="hero.JPG" alt="" />
-
-  <!-- Floating language switch -->
-  <div class="lang-switch" role="group" aria-label="Language switch">
-    <button id="btnZh" class="active" type="button">中文</button>
-    <button id="btnEn" type="button">EN</button>
+  <!-- Language -->
+  <div class="lang-switch">
+    <button class="active">中文</button>
+    <button>EN</button>
   </div>
 
-  <!-- HERO (full screen) -->
-  <section class="hero" aria-label="Hero">
-    <div class="hero-inner">
-      <div class="brand">
-        <h1 class="logo">KOICOIN</h1>
-        <p class="sub" data-i18n="subtitle">CAFE · KTV · BAR</p>
-      </div>
-
-      <div class="scroll-hint" data-i18n="scroll">Scroll</div>
+  <!-- HERO -->
+  <section class="hero">
+    <div class="hero-content">
+      <h1>KOICOIN</h1>
+      <p>CAFE · KTV · BAR</p>
     </div>
+    <div class="scroll">SCROLL</div>
   </section>
 
-  <!-- After scroll: only TWO wide cards -->
-  <section class="section" aria-label="Info">
-    <div class="wrap">
-      <div class="cards">
-        <div class="card">
-          <p class="kicker" data-i18n="contactKicker">Contact</p>
-          <div class="rows">
-            <div class="row">
-              <div class="label" data-i18n="phoneLabel">Phone</div>
-              <div class="value"><a class="value-link" href="tel:+64273322466">027 332 2466</a></div>
-            </div>
-            <div class="row">
-              <div class="label" data-i18n="wechatLabel">WeChat</div>
-              <div class="value">koicoin_nz</div>
-            </div>
-          </div>
-        </div>
+  <!-- INFO -->
+  <section class="section">
+    <div class="cards">
+      <div class="card">
+        <h3>CONTACT</h3>
+        <p>
+          Phone · 027 332 2466
+          <span>WeChat · koicoin_nz</span>
+        </p>
+      </div>
 
-        <div class="card">
-          <p class="kicker" data-i18n="infoKicker">Info</p>
-          <div class="rows">
-            <div class="row">
-              <div class="label" data-i18n="addressLabel">Address</div>
-              <div class="value" data-i18n="addressValue">260 Oteha Valley Road, Albany, Auckland</div>
-            </div>
-            <div class="row">
-              <div class="label" data-i18n="hoursLabel">Hours</div>
-              <div class="value" data-i18n="hoursValue">11am – 3am</div>
-            </div>
-          </div>
-        </div>
+      <div class="card">
+        <h3>INFO</h3>
+        <p>
+          260 Oteha Valley Road<br />
+          Albany, Auckland
+          <span>11am – 3am</span>
+        </p>
       </div>
     </div>
   </section>
-
-  <script>
-    const dict = {
-      zh: {
-        subtitle: "CAFE · KTV · BAR",
-        scroll: "下滑",
-        contactKicker: "预约 / 咨询",
-        phoneLabel: "电话",
-        wechatLabel: "微信",
-        infoKicker: "信息",
-        addressLabel: "地址",
-        addressValue: "260 Oteha Valley Road, Albany, Auckland",
-        hoursLabel: "营业时间",
-        hoursValue: "11am – 3am",
-      },
-      en: {
-        subtitle: "CAFE · KTV · BAR",
-        scroll: "Scroll",
-        contactKicker: "Contact",
-        phoneLabel: "Phone",
-        wechatLabel: "WeChat",
-        infoKicker: "Info",
-        addressLabel: "Address",
-        addressValue: "260 Oteha Valley Road, Albany, Auckland",
-        hoursLabel: "Hours",
-        hoursValue: "11am – 3am",
-      }
-    };
-
-    const btnZh = document.getElementById("btnZh");
-    const btnEn = document.getElementById("btnEn");
-
-    function setLang(lang){
-      document.documentElement.lang = (lang === "zh") ? "zh" : "en";
-
-      document.querySelectorAll("[data-i18n]").forEach(el => {
-        const key = el.getAttribute("data-i18n");
-        if (dict[lang] && dict[lang][key] != null) el.textContent = dict[lang][key];
-      });
-
-      btnZh.classList.toggle("active", lang === "zh");
-      btnEn.classList.toggle("active", lang === "en");
-
-      try { localStorage.setItem("koicoin_lang", lang); } catch(e){}
-    }
-
-    btnZh.addEventListener("click", () => setLang("zh"));
-    btnEn.addEventListener("click", () => setLang("en"));
-
-    // Load saved language (default zh)
-    (function init(){
-      let lang = "zh";
-      try {
-        const saved = localStorage.getItem("koicoin_lang");
-        if (saved === "en" || saved === "zh") lang = saved;
-      } catch(e){}
-      setLang(lang);
-    })();
-  </script>
 </body>
 </html>
