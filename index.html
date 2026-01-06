@@ -4,7 +4,6 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover" />
   <meta name="color-scheme" content="dark" />
-  <title>KOICOIN</title>
   
   <!-- SEO / Meta -->
   <title>KOICOIN | Cafe · KTV · Bar</title>
@@ -267,29 +266,35 @@
     <div class="wrap">
       <div class="grid">
 
-        <div class="card">
-          <p class="kicker" data-i18n="contact">预约 / 咨询</p>
-          <div class="row">
-            <div class="label">微信</div>
-            <div class="value small">koicoin_nz</div>
-          </div>
-          <div class="row">
-            <div class="label">电话</div>
-            <div class="value">027 332 2466</div>
-          </div>
-        </div>
+       <div class="card">
+  <p class="kicker" data-i18n="contact">预约 / 咨询</p>
 
-        <div class="card">
-          <p class="kicker" data-i18n="info">信息</p>
-          <div class="row">
-            <div class="label">时间</div>
-            <div class="value">11am – 3am</div>
-          </div>
-          <div class="row">
-            <div class="label">地址</div>
-            <div class="value small">260 Oteha Valley Road, Albany, Auckland</div>
-          </div>
-        </div>
+  <div class="row">
+    <div class="label" data-i18n="wechat_label">微信</div>
+    <div class="value small" data-i18n="wechat_value">koicoin_nz</div>
+  </div>
+
+  <div class="row">
+    <div class="label" data-i18n="phone_label">电话</div>
+    <div class="value">
+      <a href="tel:+64273322466" data-i18n="phone_value">027 332 2466</a>
+    </div>
+  </div>
+</div>
+
+<div class="card">
+  <p class="kicker" data-i18n="info">信息</p>
+
+  <div class="row">
+    <div class="label" data-i18n="hours_label">时间</div>
+    <div class="value" data-i18n="hours_value">11am – 3am</div>
+  </div>
+
+  <div class="row">
+    <div class="label" data-i18n="address_label">地址</div>
+    <div class="value small" data-i18n="address_value">260 Oteha Valley Road, Albany, Auckland</div>
+  </div>
+</div>
 
       </div>
     </div>
@@ -309,9 +314,35 @@
 
     // i18n
     const dict={
-      zh:{ tagline:"CAFE · KTV · BAR", scroll:"", contact:"预约 / 咨询", info:"信息" },
-      en:{ tagline:"CAFE · KTV · BAR", scroll:"", contact:"CONTACT", info:"INFO" }
-    };
+  zh:{
+    tagline:"CAFE · KTV · BAR",
+    scroll:"",
+    contact:"预约 / 咨询",
+    info:"信息",
+    wechat_label:"微信",
+    wechat_value:"koicoin_nz",
+    phone_label:"电话",
+    phone_value:"027 332 2466",
+    hours_label:"时间",
+    hours_value:"11am – 3am",
+    address_label:"地址",
+    address_value:"260 Oteha Valley Road, Albany, Auckland"
+  },
+  en:{
+    tagline:"CAFE · KTV · BAR",
+    scroll:"",
+    contact:"RESERVATIONS & ENQUIRIES",
+    info:"INFORMATION",
+    wechat_label:"WECHAT",
+    wechat_value:"koicoin_nz",
+    phone_label:"PHONE",
+    phone_value:"027 332 2466",
+    hours_label:"HOURS",
+    hours_value:"11:00am – 3:00am",
+    address_label:"ADDRESS",
+    address_value:"260 Oteha Valley Road, Albany, Auckland"
+  }
+};
     function setLang(l){
       document.querySelectorAll('[data-i18n]').forEach(el=>{
         el.textContent=dict[l][el.dataset.i18n];
