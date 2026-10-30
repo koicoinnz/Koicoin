@@ -1,362 +1,50 @@
-<!doctype html>
-<html lang="zh">
-<head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover" />
-  <meta name="color-scheme" content="dark" />
-  
-  <!-- SEO / Meta -->
-  <title>KOICOIN | Cafe · KTV · Bar</title>
-  <meta name="description" content="KOICOIN is a cafe, KTV and bar located in Albany, Auckland. Open daily from 11am to 3am." />
-  <meta property="og:title" content="KOICOIN" />
-  <meta property="og:description" content="Cafe, KTV and bar in Albany, Auckland. Open daily from 11am to 3am." />
-  <meta property="og:type" content="website" />
-  <meta property="og:url" content="https://koicoin.co.nz" />
-  
-  <style>
-    :root{
-      --bg:#050607;
-      --text:rgba(255,255,255,.92);
-      --muted:rgba(255,255,255,.55);
-      --shadow:0 24px 80px rgba(0,0,0,.55);
-      --radius:28px;
-      --safe-top:env(safe-area-inset-top);
-      --safe-right:env(safe-area-inset-right);
-      --safe-bottom:env(safe-area-inset-bottom);
-      --safe-left:env(safe-area-inset-left);
-      --vh:1vh;
-    }
+<!DOCTYPE html>
+<html lang="en"><head><meta charset="utf-8"/><meta content="width=device-width,initial-scale=1" name="viewport"/><meta content="#080911" name="theme-color"/><title>KOICOIN — Music Brings People Together</title><meta content="KOICOIN — Private karaoke rooms in Albany, Auckland. Explore the atmosphere and request a reservation." name="description"/><link href="https://fonts.googleapis.com" rel="preconnect"/><link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/><link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&amp;family=Italiana&amp;family=Playfair+Display:ital,wght@0,400;0,500;1,400&amp;display=swap" rel="stylesheet"/><style>
+:root{--bg:#080911;--paper:#f5eced;--muted:#aaa3b1;--pink:#ff4ba8;--line:#ffffff25}*{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;background:var(--bg);color:var(--paper);font-family:'DM Sans',sans-serif}body.lock{overflow:hidden}button,input,select,textarea{font:inherit}button{cursor:pointer}a{color:inherit;text-decoration:none}button:focus-visible,a:focus-visible,input:focus-visible,select:focus-visible,textarea:focus-visible{outline:2px solid #ff8bc8;outline-offset:4px}.header{height:88px;position:absolute;z-index:20;top:0;left:0;right:0;display:flex;align-items:center;justify-content:center;padding:0 5%;gap:32px}.nav{display:flex;gap:42px;align-items:center}.nav a,.lang,.reserve-top{font-size:11px;letter-spacing:.19em;font-weight:700}.nav a:hover,.lang:hover{color:#ff80c1}.right{position:absolute;right:5%;display:flex;gap:25px;align-items:center}.lang{background:none;border:0;color:#ddd}.outline{background:transparent;border:1px solid #e958a5;border-radius:100px;color:white;padding:15px 29px;letter-spacing:.16em;font-size:11px;font-weight:700;box-shadow:0 0 18px #ff4ba82b;transition:.3s}.outline:hover{background:#ff4ba81e;box-shadow:0 0 26px #ff4ba85a}.hero{height:100svh;min-height:630px;position:relative;overflow:hidden;display:grid;place-items:center}.hero:after{content:"";pointer-events:none;position:absolute;inset:0;background:linear-gradient(90deg,#06070b11,#06070b55 34%,#06070b55 66%,#06070b11),radial-gradient(ellipse at center,transparent 20%,#070811bb 100%)}.grain{position:absolute;inset:0;opacity:.15;pointer-events:none;background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 180 180' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='.4'/%3E%3C/svg%3E");z-index:3}.film{position:absolute;object-fit:cover;border:10px solid #09080d;filter:brightness(.62) saturate(.8);box-shadow:0 18px 65px #0009;transition:transform 1.5s ease,filter 1s ease}.film:hover{filter:brightness(.85) saturate(1);transform:rotate(0deg) scale(1.02)!important}.f1{width:32%;height:47%;left:-5%;top:13%;transform:rotate(8deg)}.f2{width:27%;height:34%;left:-4%;bottom:-7%;transform:rotate(11deg)}.f3{width:29%;height:39%;right:-4%;top:13%;transform:rotate(-9deg)}.f4{width:31%;height:44%;right:-5%;bottom:-6%;transform:rotate(6deg)}.hero-center{z-index:5;text-align:center;position:relative;width:80%;height:240px;display:grid;place-items:center}.brand,.tagline{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;flex-direction:column;transition:opacity 1.4s ease,transform 1.4s ease}.brand{font-family:Italiana,Georgia,serif;font-size:clamp(68px,10.5vw,165px);letter-spacing:-.055em;text-shadow:0 0 38px #ff4ba832}.tagline{opacity:0;transform:translateY(12px);font-family:'Playfair Display',Georgia,serif;font-size:clamp(36px,5.3vw,77px);line-height:1.2}.tagline em{font-style:italic;color:#ff65b6;text-shadow:0 0 22px #fa35938c}.hero.switched .brand{opacity:0;transform:translateY(-12px);pointer-events:none}.hero.switched .tagline{opacity:1;transform:translateY(0)}.scroll{position:absolute;z-index:6;bottom:7%;left:50%;transform:translateX(-50%);text-align:center;font-size:10px;letter-spacing:.28em;color:#ddd}.scroll:after{content:'↓';display:block;font-size:22px;margin-top:12px}.section{padding:120px max(6%,calc((100vw - 1400px)/2));border-top:1px solid #ffffff12}.eyebrow{font-size:11px;letter-spacing:.28em;color:#f48cba;font-weight:700}.serif{font-family:'Playfair Display',Georgia,serif;font-weight:400;line-height:1.1;letter-spacing:-.045em}h2{font-size:clamp(46px,5vw,82px);margin:20px 0 22px}.sub{color:#b7b0bb;font-size:15px;line-height:1.8;max-width:440px}.rooms{display:grid;grid-template-columns:32% 1fr;gap:5%;align-items:center}.room-photo{height:540px;width:100%;object-fit:cover;filter:saturate(.8);transition:opacity .3s}.room-stage{position:relative}.room-label{position:absolute;right:24px;bottom:24px;background:#080911dd;backdrop-filter:blur(15px);padding:20px 26px;font-size:11px;letter-spacing:.18em}.room-label strong{display:block;font-family:'Playfair Display';font-weight:400;font-size:24px;letter-spacing:0;margin-top:7px}.arrows{display:flex;gap:12px;margin-top:38px}.arrow{width:48px;height:48px;border:1px solid #ffffff65;background:transparent;color:white;border-radius:50%;font-size:21px}.arrow:hover{border-color:var(--pink);color:var(--pink)}.counter{font-size:12px;letter-spacing:.25em;color:#bcb0bd;margin-top:28px}.split{display:grid;grid-template-columns:1fr 1fr;gap:18px}.tile{min-height:490px;position:relative;overflow:hidden;display:flex;align-items:end;padding:42px}.tile:before{content:'';position:absolute;inset:0;background:linear-gradient(0deg,#06060be8 0%,transparent 75%);z-index:1}.tile img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;transition:transform .7s}.tile:hover img{transform:scale(1.06)}.tile-content{z-index:2;position:relative}.tile h3{font-family:'Playfair Display';font-size:clamp(34px,3vw,54px);font-weight:400;line-height:1.13;margin:13px 0 22px}.text-link{display:inline-block;border-bottom:1px solid #e8afc8;padding-bottom:10px;font-size:11px;letter-spacing:.18em;font-weight:700}.contact{display:grid;grid-template-columns:1fr 1fr;gap:50px;align-items:center}.contact p{color:#c3bac6;line-height:1.9}.map{height:360px;background:linear-gradient(145deg,#151824,#0d1019);border:1px solid #ffffff18;display:grid;place-items:center;text-align:center;color:#ded2dd}.map span{font-size:42px;color:var(--pink)}.footer{border-top:1px solid #ffffff20;padding:32px 6%;display:flex;justify-content:space-between;align-items:center;color:#aaa;font-size:12px}.footer strong{font-family:Italiana;font-size:26px;color:white;font-weight:400}.overlay{position:fixed;inset:0;background:#0009;z-index:50;opacity:0;pointer-events:none;transition:opacity .35s}.overlay.open{opacity:1;pointer-events:auto}.drawer{position:fixed;z-index:51;right:0;top:0;bottom:0;width:min(510px,100%);background:#101018;border-left:1px solid #ffffff24;transform:translateX(102%);transition:transform .45s cubic-bezier(.22,.8,.22,1);overflow-y:auto;padding:55px 42px}.drawer.open{transform:translateX(0)}.close{position:absolute;right:29px;top:25px;color:white;background:none;border:0;font-size:29px}.drawer h2{font-size:43px;margin:15px 0}.drawer .sub{font-size:13px;margin-bottom:35px}.fields{display:grid;grid-template-columns:1fr 1fr;gap:18px}.field{margin-bottom:22px}.field label{display:block;font-size:12px;margin-bottom:11px;color:#e4dbe2}.field input,.field select,.field textarea{width:100%;border:1px solid #ffffff35;background:#14151e;border-radius:5px;padding:15px 13px;color:white;min-height:48px;color-scheme:dark}.field textarea{min-height:100px;resize:vertical}.submit{width:100%;padding:20px;border:1px solid #ff5db2;border-radius:100px;background:#ed4b9c;color:#130712;letter-spacing:.16em;font-size:11px;font-weight:700}.note{font-size:11px;color:#a79eaa;text-align:center;margin-top:18px;line-height:1.6}.success{display:none;text-align:center;padding:45px 0}.success h3{font:38px 'Playfair Display';font-weight:400}.success p{color:#bbb;line-height:1.8}.mobile-menu{display:none}.hidden{display:none!important}@media(max-width:900px){.header{height:76px;justify-content:flex-start}.nav{display:none;position:absolute;top:70px;left:0;right:0;background:#0b0b13;padding:30px;flex-direction:column;gap:26px}.nav.open{display:flex}.mobile-menu{display:block;border:0;background:none;color:white;font-size:23px}.right{right:5%;gap:12px}.outline{padding:12px 17px}.hero{min-height:580px}.f1{width:54%;height:37%;top:12%;left:-19%}.f2{width:48%;height:26%;bottom:0;left:-20%}.f3{width:53%;height:32%;right:-22%;top:14%}.f4{width:53%;height:34%;right:-22%;bottom:0}.hero-center{width:96%}.brand{font-size:clamp(55px,12vw,110px)}.tagline{font-size:clamp(30px,6vw,60px)}.section{padding:85px 6%}.rooms{grid-template-columns:1fr;gap:30px}.room-photo{height:440px}.split{grid-template-columns:1fr}.tile{min-height:400px}.contact{grid-template-columns:1fr}.drawer{padding:55px 24px}.footer{gap:15px;flex-wrap:wrap}}@media(max-width:480px){.right{gap:7px}.lang{font-size:9px}.reserve-top{font-size:9px}.header{padding:0 4%}.room-photo{height:330px}.fields{gap:10px}.tile{min-height:350px}}
+@media(prefers-reduced-motion:reduce){*,*:before,*:after{scroll-behavior:auto!important;transition:none!important;animation:none!important}}
+.events-focus{display:grid;grid-template-columns:38% 1fr;gap:5%;align-items:center;padding:110px 6%;border-top:1px solid #ffffff14}.events-image{height:490px;overflow:hidden}.events-image img{width:100%;height:100%;object-fit:cover;filter:brightness(.82);transition:transform .7s}.events-image:hover img{transform:scale(1.035)}.events-copy .outline{margin-top:25px}@media(max-width:800px){.events-focus{grid-template-columns:1fr;padding:75px 6%;gap:30px}.events-image{height:320px}}@media(prefers-reduced-motion:reduce){.brand,.tagline,.film,.events-image img{transition:none!important}}
+</style>
+<style>
 
-    *{ box-sizing:border-box; }
-    html,body{ height:100%; }
-    body{
-      margin:0;
-      background:var(--bg);
-      color:var(--text);
-      font-family: ui-sans-serif, system-ui, -apple-system,
-        "SF Pro Display","SF Pro Text",
-        Segoe UI, Roboto, Helvetica, Arial,
-        "PingFang SC","Hiragino Sans GB","Microsoft YaHei",sans-serif;
-      -webkit-font-smoothing: antialiased;
-      -moz-osx-font-smoothing: grayscale;
-      overflow-x:hidden;
-    }
+.hero:after{background:radial-gradient(ellipse at center,rgba(5,5,12,.12) 10%,rgba(5,5,12,.46) 100%)}
+.map{position:relative;overflow:hidden;isolation:isolate;background:radial-gradient(ellipse at 48% 52%,#34203d 0%,#151524 45%,#0b0e1b 100%);border:1px solid #b365a744;transition:border-color .4s,box-shadow .4s}
+.map:before{content:"";position:absolute;inset:-45%;transform:rotate(-27deg);opacity:.48;background:repeating-linear-gradient(0deg,transparent 0 43px,#d2a9dc28 44px 45px,transparent 46px 105px),repeating-linear-gradient(90deg,transparent 0 61px,#e6b7e22b 62px 63px,transparent 64px 139px);mask-image:radial-gradient(ellipse at center,#000 25%,transparent 70%)}
+.map:after{content:"";position:absolute;inset:0;background:linear-gradient(135deg,#090a14bb,transparent 40%,#090a14bb);pointer-events:none}
+.map:hover{border-color:#ef6eb7;box-shadow:0 0 45px #ed4b9c28}
+.map>div{position:relative;z-index:2;padding:22px 38px;border:1px solid #ef9bc633;background:#0d0c1eb8;backdrop-filter:blur(8px);box-shadow:0 0 55px #ff4ba829;font-size:18px;letter-spacing:.12em}
+.map span{display:inline-block;font-size:47px;text-shadow:0 0 22px #ff4ba8;animation:mapPulse 2.7s ease-in-out infinite}
+.map small{font-size:10px;letter-spacing:.23em;line-height:2.8;color:#e4b6d1}
+@keyframes mapPulse{50%{filter:drop-shadow(0 0 16px #ff5eaf);transform:scale(1.08)}}
+@media(prefers-reduced-motion:reduce){.map span{animation:none}}
+</style><style>
 
-    a{ color:inherit; text-decoration:none; }
+.hero:after{background:linear-gradient(180deg,rgba(5,5,12,.72),rgba(5,5,12,.08) 30%,rgba(5,5,12,.08) 68%,rgba(5,5,12,.48))}
+.hero-center{background:radial-gradient(ellipse at center,rgba(7,6,13,.90) 0%,rgba(7,6,13,.72) 46%,transparent 75%);width:min(96%,1040px);height:370px}
+@media(max-width:700px){.hero-center{height:320px}}
+</style><style>
 
-    /* ---------- Language toggle ---------- */
-    .lang{
-      position:fixed;
-      top:calc(16px + var(--safe-top));
-      right:calc(16px + var(--safe-right));
-      z-index:20;
-      display:flex;
-      gap:6px;
-      padding:6px;
-      border-radius:999px;
-      background:rgba(255,255,255,.10);
-      border:1px solid rgba(255,255,255,.14);
-      backdrop-filter:blur(14px);
-    }
-    .lang button{
-      border:0;
-      background:none;
-      color:rgba(255,255,255,.8);
-      padding:6px 12px;
-      border-radius:999px;
-      font-weight:700;
-      cursor:pointer;
-    }
-    .lang button.active{
-      background:rgba(255,255,255,.18);
-      color:#fff;
-    }
+.hero:after{background:linear-gradient(0deg,rgba(5,5,12,.36),transparent 32%,rgba(5,5,12,.16))!important}
+.hero-center{height:280px;max-width:1000px}
+.room-stage{background:#0b0b12;min-height:520px;display:flex;align-items:center;justify-content:center;overflow:hidden}
+.room-photo{height:520px!important;width:100%;object-fit:contain!important;object-position:center!important;filter:none!important}
+.events-focus img{object-fit:contain!important;object-position:center!important;background:#0b0b12}
+.room-label{bottom:10px;right:10px;background:rgba(7,7,14,.88)}
+@media(max-width:720px){.room-stage{min-height:280px}.room-photo{height:310px!important}}
+</style><style>
 
-    /* ---------- HERO ---------- */
-    .hero{
-      position:relative;
-      height:100vh;
-      height:100svh;
-      height:calc(var(--vh)*100);
-      display:flex;
-      align-items:center;
-      justify-content:center;
-      padding:
-        calc(28px + var(--safe-top))
-        calc(28px + var(--safe-right))
-        calc(28px + var(--safe-bottom))
-        calc(28px + var(--safe-left));
-      overflow:hidden;
-      background:#000;
-    }
-
-    .hero::before{
-      content:"";
-      position:absolute;
-      inset:0;
-      background:url("./hero.JPG") center/cover no-repeat;
-      transform:scale(1.08);
-      animation:kenburns 25s ease-in-out infinite alternate;
-      filter:saturate(1.05) contrast(1.02);
-    }
-
-    .hero::after{
-      content:"";
-      position:absolute;
-      inset:0;
-      background:
-        radial-gradient(1200px 600px at 30% 35%, rgba(0,0,0,0), rgba(0,0,0,.55)),
-        linear-gradient(to bottom, rgba(0,0,0,.6), rgba(0,0,0,.2), rgba(0,0,0,.75));
-    }
-
-    @keyframes kenburns{
-      from{ transform:scale(1.08) translate(-1.5%,-1%); }
-      to{ transform:scale(1.16) translate(1.5%,1%); }
-    }
-
-    .hero-inner{
-      position:relative;
-      z-index:2;
-      text-align:center;
-      width:100%;
-      max-width:1200px;
-      margin:0 auto;
-    }
-
-    .brand{
-      margin:0;
-      font-weight:900;
-      text-transform:uppercase;
-      line-height:1;
-      letter-spacing:-0.045em;
-      font-size:clamp(110px,14.5vw,260px);
-      text-shadow:0 18px 70px rgba(0,0,0,.55);
-    }
-
-    .tagline{
-      margin-top:14px;
-      font-size:12px;
-      letter-spacing:.32em;
-      color:rgba(255,255,255,.65);
-    }
-
-    .scroll{
-      margin-top:22px;
-      display:inline-flex;
-      align-items:center;
-      gap:10px;
-      font-size:12px;
-      letter-spacing:.22em;
-      color:rgba(255,255,255,.6);
-      cursor:pointer;
-    }
-    .scroll .dot{
-      width:8px;height:8px;border-radius:50%;
-      background:rgba(255,255,255,.7);
-      box-shadow:0 0 0 6px rgba(255,255,255,.12);
-      animation:pulse 1.8s ease-in-out infinite;
-    }
-    @keyframes pulse{
-      0%,100%{ opacity:.9; transform:translateY(0); }
-      50%{ opacity:.55; transform:translateY(6px); }
-    }
-
-    /* ---------- INFO ---------- */
-    .section{
-      padding:64px 28px 80px;
-      background:#000;
-    }
-    .wrap{
-      max-width:1200px;
-      margin:0 auto;
-    }
-
-    .grid{
-      display:grid;
-      grid-template-columns:1fr 1fr;
-      gap:28px;
-    }
-
-    .card{
-      padding:26px 28px;
-      border-radius:var(--radius);
-      background:linear-gradient(180deg,rgba(255,255,255,.10),rgba(255,255,255,.06));
-      border:1px solid rgba(255,255,255,.12);
-      box-shadow:var(--shadow);
-      backdrop-filter:blur(18px);
-    }
-
-    .kicker{
-      margin:0 0 14px;
-      font-size:12px;
-      letter-spacing:.28em;
-      color:rgba(255,255,255,.55);
-    }
-
-    .row{
-      display:grid;
-      grid-template-columns:90px 1fr;
-      gap:14px;
-      margin:10px 0;
-    }
-
-    .label{
-      font-size:12px;
-      letter-spacing:.22em;
-      color:rgba(255,255,255,.5);
-    }
-
-    .value{
-      font-size:20px;
-      font-weight:800;
-    }
-    .value.small{
-      font-size:18px;
-      font-weight:700;
-      opacity:.85;
-    }
-
-    /* ---------- MOBILE ---------- */
-    @media (max-width:640px){
-      .hero{
-        padding-left:calc(14px + var(--safe-left));
-        padding-right:calc(14px + var(--safe-right));
-      }
-      .brand{
-        font-size:clamp(78px,16vw,150px);
-        letter-spacing:-0.05em;
-      }
-      .grid{
-        grid-template-columns:1fr;
-        gap:22px;
-      }
-      .section{
-        padding:40px 18px 56px;
-      }
-      .row{
-        grid-template-columns:78px 1fr;
-      }
-      .value{ font-size:18px; }
-      .value.small{ font-size:16px; }
-    }
-
-    html{ scroll-behavior:smooth; }
-  </style>
-</head>
-
-<body>
-
-  <div class="lang">
-    <button class="active" data-lang="zh">中文</button>
-    <button data-lang="en">EN</button>
-  </div>
-
-  <section class="hero">
-    <div class="hero-inner">
-      <h1 class="brand">KOICOIN</h1>
-      <div class="tagline" data-i18n="tagline">咖啡 · KTV · 酒吧</div>
-      <div class="scroll" id="scrollBtn">
-        <span class="dot"></span>
-        <span data-i18n="scroll">滑动</span>
-      </div>
-    </div>
-  </section>
-
-  <section class="section" id="info">
-    <div class="wrap">
-      <div class="grid">
-
-       <div class="card">
-  <p class="kicker" data-i18n="contact">预约 / 咨询</p>
-
-  <div class="row">
-    <div class="label" data-i18n="wechat_label">微信</div>
-    <div class="value small" data-i18n="wechat_value">koicoin_nz</div>
-  </div>
-
-  <div class="row">
-    <div class="label" data-i18n="phone_label">电话</div>
-    <div class="value">
-      <a href="tel:+6492666889" data-i18n="phone_value">09 2666 889</a>
-    </div>
-  </div>
-</div>
-
-<div class="card">
-  <p class="kicker" data-i18n="info">信息</p>
-
-  <div class="row">
-    <div class="label" data-i18n="hours_label">时间</div>
-    <div class="value" data-i18n="hours_value">11am – 3am</div>
-  </div>
-
-  <div class="row">
-    <div class="label" data-i18n="address_label">地址</div>
-    <div class="value small" data-i18n="address_value">260 Oteha Valley Road, Albany, Auckland</div>
-  </div>
-</div>
-
-      </div>
-    </div>
-  </section>
-
-  <script>
-    // viewport fix
-    function setVh(){
-      document.documentElement.style.setProperty('--vh', `${window.innerHeight*0.01}px`);
-    }
-    setVh(); window.addEventListener('resize', setVh);
-
-    // scroll
-    document.getElementById('scrollBtn').onclick=()=>{
-      document.getElementById('info').scrollIntoView({behavior:'smooth'});
-    };
-
-    // i18n
-    const dict={
-  zh:{
-    tagline:"CAFE · KTV · BAR",
-    scroll:"",
-    contact:"预约 / 咨询",
-    info:"信息",
-    wechat_label:"微信",
-    wechat_value:"koicoin_nz",
-    phone_label:"电话",
-    phone_value:"09 2666 889",
-    hours_label:"时间",
-    hours_value:"11am – 3am",
-    address_label:"地址",
-    address_value:"260 Oteha Valley Road, Albany, Auckland"
-  },
-  en:{
-    tagline:"CAFE · KTV · BAR",
-    scroll:"",
-    contact:"RESERVATIONS & ENQUIRIES",
-    info:"INFORMATION",
-    wechat_label:"WECHAT",
-    wechat_value:"koicoin_nz",
-    phone_label:"PHONE",
-    phone_value:"09 2666 889",
-    hours_label:"HOURS",
-    hours_value:"11:00am – 3:00am",
-    address_label:"ADDRESS",
-    address_value:"260 Oteha Valley Road, Albany, Auckland"
-  }
-};
-    function setLang(l){
-      document.querySelectorAll('[data-i18n]').forEach(el=>{
-        el.textContent=dict[l][el.dataset.i18n];
-      });
-      document.querySelectorAll('.lang button').forEach(b=>{
-        b.classList.toggle('active', b.dataset.lang===l);
-      });
-      localStorage.setItem('lang',l);
-    }
-    document.querySelectorAll('.lang button').forEach(b=>{
-      b.onclick=()=>setLang(b.dataset.lang);
-    });
-    setLang(localStorage.getItem('lang')||'zh');
-  </script>
-
-</body>
-</html>
+.rooms{grid-template-columns:minmax(250px,.62fr) minmax(0,1.38fr)!important;column-gap:5vw!important}
+.room-stage{background:#0e1019;min-width:0}
+.room-photo{object-fit:contain!important;object-position:center!important;display:block;width:100%;height:min(54vw,510px)!important;background:#0e1019;filter:none!important}
+.room-thumbs{grid-column:2;display:grid;grid-template-columns:repeat(7,minmax(0,1fr));gap:9px;margin-top:12px}
+.room-thumb{background:#15131c;border:1px solid #ffffff29;padding:0;aspect-ratio:1.3;overflow:hidden;cursor:pointer;border-radius:3px;opacity:.7;transition:.2s}
+.room-thumb.active,.room-thumb:hover{border-color:#ff66b6;opacity:1;box-shadow:0 0 0 1px #ff66b655}
+.room-thumb img{width:100%;height:100%;object-fit:cover;display:block}
+@media(max-width:850px){.rooms{display:block!important}.room-thumbs{display:grid;grid-template-columns:repeat(4,1fr)}.room-photo{height:54vw!important;min-height:260px}}
+</style><style id="koicoin-hero-background-final">
+.hero { background: linear-gradient(90deg,rgba(5,5,12,.24),rgba(5,5,12,.32)),url("assets/hero-clean.webp?v=20261030") center center / cover no-repeat !important; }
+</style>
+</head><body><header class="header"><button aria-label="Toggle navigation" class="mobile-menu" id="menu">☰</button><nav class="nav" id="nav"><a data-i="navRooms" href="#rooms">ROOMS</a><a data-i="navEvents" href="#events">EVENTS</a><a data-i="navContact" href="#contact">CONTACT</a></nav><div class="right"><button class="lang" id="lang">EN | 中文</button><button class="outline reserve-top" data-i="reserve" data-reserve="">RESERVE →</button></div></header><main><section class="hero" id="home"><div class="grain"></div><div class="hero-center"><div class="brand">KOICOIN</div><div class="tagline"><span>Music Brings</span><em>People Together.</em></div></div><a class="scroll" data-i="scroll" href="#rooms">SCROLL</a></section><section class="section rooms" id="rooms"><div><div class="eyebrow" data-i="navRooms">ROOMS</div><h2 class="serif" data-i="roomsTitle">A Room<br/>For Every Night.</h2><p class="sub" data-i="roomsSub">Private spaces. Your people. Your music. Explore our real rooms — we'll take care of the room arrangements.</p><div class="arrows"><button aria-label="Previous room" class="arrow" id="prev">←</button><button aria-label="Next room" class="arrow" id="next">→</button></div><div class="counter" id="counter">01 / 07</div></div><div class="room-stage"><img alt="KOICOIN real karaoke room photography" class="room-photo" id="roomPhoto" src="assets/room-01.webp"/><div class="room-label"><span data-i="roomLabel">PRIVATE SPACES</span><strong id="roomName">The atmosphere</strong></div></div><div class="room-thumbs" id="roomThumbs" aria-label="Room photo gallery"><button class="room-thumb active" data-room="0" aria-label="Show room photo 1"><img src="assets/room-01.webp" alt="KOICOIN room photo 1" loading="lazy"></button><button class="room-thumb" data-room="1" aria-label="Show room photo 2"><img src="assets/room-02.webp" alt="KOICOIN room photo 2" loading="lazy"></button><button class="room-thumb" data-room="2" aria-label="Show room photo 3"><img src="assets/room-03.webp" alt="KOICOIN room photo 3" loading="lazy"></button><button class="room-thumb" data-room="3" aria-label="Show room photo 4"><img src="assets/room-04.webp" alt="KOICOIN room photo 4" loading="lazy"></button><button class="room-thumb" data-room="4" aria-label="Show room photo 5"><img src="assets/room-05.webp" alt="KOICOIN room photo 5" loading="lazy"></button><button class="room-thumb" data-room="5" aria-label="Show room photo 6"><img src="assets/room-06.webp" alt="KOICOIN room photo 6" loading="lazy"></button><button class="room-thumb" data-room="6" aria-label="Show room photo 7"><img src="assets/room-07.webp" alt="KOICOIN room photo 7" loading="lazy"></button></div></section><section class="section events-focus" id="events"><div class="events-copy"><div class="eyebrow" data-i="navEvents">EVENTS</div><h2 class="serif" data-i="eventsTitle">Nights Worth<br/>Remembering.</h2><p class="sub" data-i="eventsSub">Birthdays, celebrations, and nights with your favourite people. Tell us what you're planning.</p><button class="outline" data-i="eventsLink" data-reserve="">PLAN YOUR NIGHT →</button></div><div class="events-image"><img alt="KOICOIN private party room" loading="lazy" src="assets/room-01.webp"/></div></section><section class="section contact" id="contact"><div><div class="eyebrow" data-i="navContact">CONTACT</div><h2 class="serif" data-i="visitTitle">Find Us.</h2><p>260 Oteha Valley Road<br/>Albany, Auckland, New Zealand</p><p data-i="hours">Open daily · 5 PM – 3 AM</p><p><a href="tel:+6492666889">09 2666 889</a></p><a class="outline" data-i="directions" href="https://www.google.com/maps/search/?api=1&amp;query=260+Oteha+Valley+Road+Albany+Auckland" rel="noopener" target="_blank">GET DIRECTIONS →</a></div><a class="map" href="https://www.google.com/maps/search/?api=1&amp;query=260+Oteha+Valley+Road+Albany+Auckland" rel="noopener" target="_blank"><div><span>⌖</span><br/>KOICOIN<br/><small>ALBANY · AUCKLAND</small></div></a></section></main><footer class="footer"><strong>KOICOIN</strong><span>© 2026 KOICOIN · PRIVATE KARAOKE · AUCKLAND</span><button class="outline" data-i="reserve" data-reserve="">RESERVE →</button></footer><div class="overlay" id="overlay"></div><aside aria-hidden="true" aria-labelledby="formTitle" aria-modal="true" class="drawer" id="drawer" role="dialog"><button aria-label="Close" class="close" id="close">×</button><div id="formView"><div class="eyebrow">KOICOIN · RESERVATIONS</div><h2 class="serif" data-i="formTitle" id="formTitle">Make a Reservation.</h2><p class="sub" data-i="formSub">Tell us about your night. We'll take care of the rest.</p><form id="booking"><div class="fields"><div class="field"><label data-i="date" for="date">Date</label><input id="date" name="date" required="" type="date"/></div><div class="field"><label data-i="time" for="time">Time</label><input id="time" name="time" required="" type="time" value="20:00"/></div><div class="field"><label data-i="guests" for="guests">Guests</label><input id="guests" max="100" min="1" name="guests" required="" type="number" value="6"/></div><div class="field"><label data-i="occasion" for="occasion">Occasion (optional)</label><select id="occasion" name="occasion"><option value="Casual">Casual</option><option value="Birthday">Birthday</option><option value="Celebration">Celebration</option><option value="Corporate">Corporate</option></select></div></div><div class="field"><label data-i="name" for="name">Name</label><input autocomplete="name" id="name" name="name" required=""/></div><div class="field"><label data-i="phone" for="phone">Phone number</label><input autocomplete="tel" id="phone" name="phone" required="" type="tel"/></div><div class="field"><label data-i="notes" for="notes">Special requests (optional)</label><textarea id="notes" name="notes" placeholder="Birthday decoration, accessibility needs, etc."></textarea></div><button class="submit" data-i="request" type="submit">SEND BOOKING REQUEST →</button><p class="note" data-i="disclaimer">Your email app will open. Please press Send to submit your request. Booking is subject to confirmation.</p></form></div><div class="success" id="success"><div class="eyebrow">KOICOIN</div><h3 data-i="prepared">Request prepared</h3><p data-i="preparedSub">Your email application will open with the reservation details. Sending it does not confirm a booking.</p><button class="outline" data-i="back" id="again">BACK TO FORM</button></div></aside><script>
+const roomImages=['assets/room-01.webp','assets/room-02.webp','assets/room-03.webp','assets/room-04.webp','assets/room-05.webp','assets/room-06.webp','assets/room-07.webp'];let idx=0,cn=false;const t={en:{navRooms:'ROOMS',navEvents:'EVENTS',navContact:'CONTACT',reserve:'RESERVE →',scroll:'SCROLL',roomsTitle:'A Room<br>For Every Night.',roomsSub:"Private spaces. Your people. Your music. Explore our real rooms — we'll take care of the room arrangements.",roomLabel:'PRIVATE SPACES',eventsTitle:'Nights Worth<br>Remembering.',eventsSub:'Birthdays, celebrations, and nights with your favourite people. Tell us what you’re planning.',eventsLink:'PLAN YOUR NIGHT →',visitTitle:'Find Us.',hours:'Open daily · 5 PM – 3 AM',directions:'GET DIRECTIONS →',formTitle:'Make a Reservation.',formSub:"Tell us about your night. We'll take care of the rest.",date:'Date',time:'Time',guests:'Guests',occasion:'Occasion (optional)',name:'Name',phone:'Phone number',notes:'Special requests (optional)',request:'SEND BOOKING REQUEST →',disclaimer:'Your email app will open. Please press Send to submit your request. Booking is subject to confirmation.',prepared:'Request prepared',preparedSub:'Your email application will open with the reservation details. Sending it does not confirm a booking.',back:'BACK TO FORM'},zh:{navRooms:'包房',navEvents:'聚会活动',navContact:'联系我们',reserve:'预订 →',scroll:'向下探索',roomsTitle:'每个夜晚，<br>都有专属空间。',roomsSub:'私密空间、音乐与好友。先了解我们的氛围，具体房间由店方统一安排。',roomLabel:'私密空间',eventsTitle:'值得铭记的<br>每一个夜晚。',eventsSub:'生日、庆祝、朋友聚会。告诉我们你的计划，由我们安排合适的空间。',eventsLink:'咨询活动 →',visitTitle:'找到我们。',hours:'每日营业 · 下午5点至凌晨3点',directions:'路线导航 →',formTitle:'预约 KOICOIN',formSub:'告诉我们你的需求，剩下的交给我们。',date:'日期',time:'时间',guests:'人数',occasion:'活动类型（选填）',name:'姓名',phone:'联系电话',notes:'特殊需求（选填）',request:'发送预约申请 →',disclaimer:'点击后将打开邮件应用，请点击发送。预约须经 KOICOIN 确认。',prepared:'预约信息已整理',preparedSub:'即将打开邮件应用并填入预约内容。发送邮件不代表预约成功。',back:'返回表单'}};const names={en:['Party atmosphere','Electric blue','The red room','Violet lights','Warm minimalism','Intimate lounge','After dark'],zh:['派对氛围','电光蓝调','红色空间','紫色灯光','暖调极简','私密空间','夜晚时刻']};function renderRoom(){document.getElementById('roomPhoto').src=roomImages[idx];document.getElementById('roomName').textContent=names[cn?'zh':'en'][idx];document.getElementById('counter').textContent=String(idx+1).padStart(2,'0')+' / 07'}document.getElementById('prev').onclick=()=>{idx=(idx+6)%7;renderRoom()};document.getElementById('next').onclick=()=>{idx=(idx+1)%7;renderRoom()};document.getElementById('lang').onclick=()=>{cn=!cn;document.documentElement.lang=cn?'zh':'en';document.querySelectorAll('[data-i]').forEach(el=>el.innerHTML=t[cn?'zh':'en'][el.dataset.i]);renderRoom()};const drawer=document.getElementById('drawer'),overlay=document.getElementById('overlay');function toggle(open){drawer.classList.toggle('open',open);overlay.classList.toggle('open',open);document.body.classList.toggle('lock',open);drawer.setAttribute('aria-hidden',String(!open));if(open)document.getElementById('date').focus()}document.querySelectorAll('[data-reserve]').forEach(b=>b.onclick=()=>toggle(true));document.getElementById('close').onclick=()=>toggle(false);overlay.onclick=()=>toggle(false);document.addEventListener('keydown',e=>{if(e.key==='Escape')toggle(false)});document.getElementById('menu').onclick=()=>document.getElementById('nav').classList.toggle('open');document.querySelectorAll('.nav a').forEach(a=>a.onclick=()=>document.getElementById('nav').classList.remove('open'));const date=document.getElementById('date');date.min=new Date(Date.now()-new Date().getTimezoneOffset()*60000).toISOString().slice(0,10);date.value=date.min;document.getElementById('booking').onsubmit=e=>{e.preventDefault();const f=new FormData(e.target);const lines=['KOICOIN Reservation Request','',`Date: ${f.get('date')}`,`Time: ${f.get('time')}`,`Guests: ${f.get('guests')}`,`Occasion: ${f.get('occasion')}`,`Name: ${f.get('name')}`,`Phone: ${f.get('phone')}`,`Special requests: ${f.get('notes')}`,'','Please contact me to confirm availability and room arrangements.'];const subject=encodeURIComponent('KOICOIN Reservation Request - '+f.get('date'));const body=encodeURIComponent(lines.join('\n'));document.getElementById('formView').style.display='none';document.getElementById('success').style.display='block';window.location.href='mailto:capitalland666@gmail.com?subject='+subject+'&body='+body};document.getElementById('again').onclick=()=>{document.getElementById('formView').style.display='block';document.getElementById('success').style.display='none'};setTimeout(()=>document.getElementById('home').classList.add('switched'),3500);
+</script><script>
+(function(){const thumbs=document.getElementById('roomThumbs');if(!thumbs)return;function mark(){const src=document.getElementById('roomPhoto').getAttribute('src');thumbs.querySelectorAll('button').forEach(b=>b.classList.toggle('active',src.endsWith('room-'+String(Number(b.dataset.room)+1).padStart(2,'0')+'.webp')))}thumbs.addEventListener('click',e=>{const b=e.target.closest('button[data-room]');if(!b)return;const i=Number(b.dataset.room);let attempts=0;const check=()=>{const src=document.getElementById('roomPhoto').getAttribute('src');if(src.endsWith('room-'+String(i+1).padStart(2,'0')+'.webp')){mark();return}if(++attempts<8){document.getElementById('next').click();check()}};check()});document.getElementById('prev').addEventListener('click',mark);document.getElementById('next').addEventListener('click',mark);mark()})();
+</script></body></html>

@@ -1,0 +1,1 @@
+KOICOIN GitHub Pages: Upload index.html and assets folder to repository root. Settings > Pages > Deploy from main / root. Room photos are the seven supplied real photographs. Hero background is an edited architecture image without baked-in center text. Reservations remain a demonstration only.
